@@ -31,6 +31,9 @@ namespace ICMSTU.API.Infrastructures
       builder.EntitySet<KEGUNIT>(nameof(KEGUNIT));
       builder.EntitySet<BPKDETR>(nameof(BPKDETR));
       builder.EntitySet<MKegiatan>(nameof(MKegiatan));
+      builder.EntitySet<MPGRM>(nameof(MPGRM));
+      builder.EntitySet<Pegawai>(nameof(Pegawai));
+      builder.EntitySet<PGRMUNIT>(nameof(PGRMUNIT));
     }
   }
 }

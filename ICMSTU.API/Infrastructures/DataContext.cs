@@ -44,6 +44,8 @@ namespace ICMSTU.API.Infrastructures
     public DbSet<DAFTPHK> DAFTPHK { get; set; }
     public DbSet<KEGUNIT> KEGUNIT { get; set; }
     public DbSet<BPKDETR> BPKDETR { get; set; }
+    public DbSet<MPGRM> MPGRM { get; set; }
+    public DbSet<PGRMUNIT> PGRMUNIT { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder builder)

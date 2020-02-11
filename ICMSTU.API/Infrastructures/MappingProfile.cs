@@ -13,6 +13,9 @@ using ICMSTU.API.Commands.DAFTPHK;
 using ICMSTU.API.Commands.KEGUNIT;
 using ICMSTU.API.Commands.BPKDETR;
 using ICMSTU.API.Commands.MKegiatan;
+using ICMSTU.API.Commands.MPGRM;
+using ICMSTU.API.Commands.Pegawai;
+using ICMSTU.API.Commands.PGRMUNIT;
 using ICMSTU.API.Dtos;
 using ICMSTU.API.Helpers;
 using ICMSTU.API.Models.Entities;
@@ -70,6 +73,15 @@ namespace ICMSTU.API.Infrastructures
 
       CreateMap<MKegiatanCreate, MKegiatan>();
       CreateMap<MKegiatanUpdate, MKegiatan>();
+
+      CreateMap<MPGRMCreate, MPGRM>();
+      CreateMap<MPGRMUpdate, MPGRM>();
+
+      CreateMap<PegawaiCreate, Pegawai>();
+      CreateMap<PegawaiUpdate, Pegawai>();
+
+      CreateMap<PGRMUNITCreate, PGRMUNIT>();
+      CreateMap<PGRMUNITUpdate, PGRMUNIT>();
     }
   }
 }
