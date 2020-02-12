@@ -16,7 +16,7 @@ namespace ICMSTU.API.Commands.PGRMUNIT
     //public UnitOrganisasi UnitOrganisasi { get; set; }
     public string Target { get; set; }
     public string Sasaran { get; set; }
-    public string NoPrio { get; set; }
+    public int? NoPrio { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
   }
@@ -33,7 +33,7 @@ namespace ICMSTU.API.Commands.PGRMUNIT
     //public UnitOrganisasi UnitOrganisasi { get; set; }
     public string Target { get; set; }
     public string Sasaran { get; set; }
-    public string NoPrio { get; set; }
+    public int? NoPrio { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
   }

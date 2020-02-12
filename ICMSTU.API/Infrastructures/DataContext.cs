@@ -71,15 +71,15 @@ namespace ICMSTU.API.Infrastructures
         e.HasIndex(j => new { j.Kode, j.Nama }).IsUnique();
       });
 
-      builder.Entity<MProgram>(e =>
-      {
-        e.HasOne(m => m.UnitOrganisasi)
-          .WithMany(u => u.MProgram)
-          .HasForeignKey(u => u.UrusanId)
-          .IsRequired(false);
+      // builder.Entity<MProgram>(e =>
+      // {
+      //   e.HasOne(m => m.UnitOrganisasi)
+      //     .WithMany(u => u.MProgram)
+      //     .HasForeignKey(u => u.UrusanId)
+      //     .IsRequired(false);
 
-        e.HasIndex(m => new { m.UrusanId, m.Kode, m.Nama }).IsUnique();
-      });
+      //   e.HasIndex(m => new { m.UrusanId, m.Kode, m.Nama }).IsUnique();
+      // });
 
       // builder.Entity<MKegiatan>(e =>
       // {
@@ -217,16 +217,24 @@ namespace ICMSTU.API.Infrastructures
         e.Property(b => b.SaldoBendT).HasColumnType("decimal(18, 2)");
       });
 
-      builder.Entity<KEGUNIT>(e =>
-      {
-        e.Property(b => b.TargetP).HasColumnType("decimal(18, 2)");
+      // builder.Entity<KEGUNIT>()
+      //   .HasKey(c => new { c.KdTahap, c.UnitKey, c.KdKegUnit });
 
-        e.Property(b => b.JumlahMin1).HasColumnType("decimal(18, 2)");
+      // builder.Entity<MKegiatan>()
+      //             .HasOne(p => p.KEGUNIT)
+      //             .WithMany(b => b.MKegiatans);
+      // builder.Entity<KEGUNIT>(e =>
+      // {
+      //   e.HasIndex(b => new { b.KdKegUnit, b.UnitKey, b.IdPrgrm });
 
-        e.Property(b => b.Pagu).HasColumnType("decimal(18, 2)");
+      //   e.Property(b => b.TargetP).HasColumnType("decimal(18, 2)");
 
-        e.Property(b => b.JumlahPls1).HasColumnType("decimal(18, 2)");
-      });
+      //   e.Property(b => b.JumlahMin1).HasColumnType("decimal(18, 2)");
+
+      //   e.Property(b => b.Pagu).HasColumnType("decimal(18, 2)");
+
+      //   e.Property(b => b.JumlahPls1).HasColumnType("decimal(18, 2)");
+      // });
 
       builder.Entity<BPKDETR>(e =>
       {

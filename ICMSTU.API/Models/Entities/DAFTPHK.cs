@@ -23,10 +23,10 @@ namespace ICMSTU.API.Models.Entities
     public string CabangBank{ get; set; }
     public string AlamatBank { get; set; }
     public string NorekBank { get; set; }
-    public int KdJenis { get; set; }
-    public int StValid { get; set; }
-    public int IsLock { get; set; }
-    public DateTime DateCreate { get; set; }
-    public DateTime DateUpdate { get; set; }
+    public int? KdJenis { get; set; }
+    public int? StValid { get; set; }
+    public int? IsLock { get; set; }
+    public DateTime? DateCreate { get; set; }
+    public DateTime? DateUpdate { get; set; }
   }
 }

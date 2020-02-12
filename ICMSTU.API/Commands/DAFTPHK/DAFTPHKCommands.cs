@@ -23,11 +23,11 @@ namespace ICMSTU.API.Commands.DAFTPHK
     public string CabangBank{ get; set; }
     public string AlamatBank { get; set; }
     public string NorekBank { get; set; }
-    public int KdJenis { get; set; }
-    public int StValid { get; set; }
-    public int IsLock { get; set; }
-    public DateTime DateCreate { get; set; }
-    public DateTime DateUpdate { get; set; }
+    public int? KdJenis { get; set; }
+    public int? StValid { get; set; }
+    public int? IsLock { get; set; }
+    public DateTime? DateCreate { get; set; }
+    public DateTime? DateUpdate { get; set; }
   }
 
   public class DAFTPHKUpdate : IRequest<Models.Entities.DAFTPHK>
@@ -49,11 +49,11 @@ namespace ICMSTU.API.Commands.DAFTPHK
     public string CabangBank{ get; set; }
     public string AlamatBank { get; set; }
     public string NorekBank { get; set; }
-    public int KdJenis { get; set; }
-    public int StValid { get; set; }
-    public int IsLock { get; set; }
-    public DateTime DateCreate { get; set; }
-    public DateTime DateUpdate { get; set; }
+    public int? KdJenis { get; set; }
+    public int? StValid { get; set; }
+    public int? IsLock { get; set; }
+    public DateTime? DateCreate { get; set; }
+    public DateTime? DateUpdate { get; set; }
   }
 
   public class DAFTPHKDelete : IRequest

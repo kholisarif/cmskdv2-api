@@ -13,13 +13,13 @@ namespace ICMSTU.API.Models.Entities
     public string UnitKey { get; set; }
     public string Jab_Bend { get; set; }
     public string RekBend{ get; set; }
-    public decimal SaldoBend { get; set; }
+    public decimal? SaldoBend { get; set; }
     public string NPWPBend { get; set; }
-    public DateTime TglStopBend { get; set; }
-    public decimal SaldoBendT { get; set; }
+    public DateTime? TglStopBend { get; set; }
+    public decimal? SaldoBendT { get; set; }
     public int Id { get; set; }
     public int StAktif { get; set; }
-    public DateTime DateCreate { get; set; }
-    public DateTime DateUpdate { get; set; }
+    public DateTime? DateCreate { get; set; }
+    public DateTime? DateUpdate { get; set; }
   }
 }

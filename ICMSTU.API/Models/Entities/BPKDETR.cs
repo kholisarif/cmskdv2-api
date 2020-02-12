@@ -11,7 +11,7 @@ namespace ICMSTU.API.Models.Entities
     public string NoJetra { get; set; }
     public string UnitKey { get; set; }
     public string NoBPK { get; set; }
-    public Decimal Nilai { get; set; }
+    public Decimal? Nilai { get; set; }
     public int Id { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
