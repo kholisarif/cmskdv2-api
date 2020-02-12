@@ -14,7 +14,7 @@ namespace ICMSTU.API.Models.Entities
     // public List<MKegiatan> MKegiatans { get; set; }
     [Key]
     public string IdPrgrm { get; set; }
-    public List<MPGRM> MPGRMs { get; set; }
+    public MPGRM MPGRM { get; set; }
     public int NoPrior { get; set; }
     public string KdSifat { get; set; }
     public string NIP { get; set; }

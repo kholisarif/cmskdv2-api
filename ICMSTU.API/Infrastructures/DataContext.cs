@@ -217,24 +217,37 @@ namespace ICMSTU.API.Infrastructures
         e.Property(b => b.SaldoBendT).HasColumnType("decimal(18, 2)");
       });
 
+      // builder.Entity<PGRMUNIT>()
+      //       .HasKey(t => new { t.UnitKey, t.IdPrgrm });
+
+      // builder.Entity<PGRMUNIT>()
+      //     .HasOne(pt => pt.MPGRM)
+      //     .WithMany(p => p.PGRMUNITs)
+      //     .HasForeignKey(pt => pt.IdPrgrm);
+      
+      // builder.Entity<PGRMUNIT>()
+      // .HasOne(pt => pt.DAFTUNIT)
+      // .WithMany(t => t.PGRMUNITs)
+      // .HasForeignKey(pt => pt.UnitKey);
+
       // builder.Entity<KEGUNIT>()
       //   .HasKey(c => new { c.KdTahap, c.UnitKey, c.KdKegUnit });
 
       // builder.Entity<MKegiatan>()
       //             .HasOne(p => p.KEGUNIT)
       //             .WithMany(b => b.MKegiatans);
-      // builder.Entity<KEGUNIT>(e =>
-      // {
-      //   e.HasIndex(b => new { b.KdKegUnit, b.UnitKey, b.IdPrgrm });
+      builder.Entity<KEGUNIT>(e =>
+      {
+        e.HasIndex(b => new { b.KdKegUnit, b.UnitKey, b.IdPrgrm });
 
-      //   e.Property(b => b.TargetP).HasColumnType("decimal(18, 2)");
+        e.Property(b => b.TargetP).HasColumnType("decimal(18, 2)");
 
-      //   e.Property(b => b.JumlahMin1).HasColumnType("decimal(18, 2)");
+        e.Property(b => b.JumlahMin1).HasColumnType("decimal(18, 2)");
 
-      //   e.Property(b => b.Pagu).HasColumnType("decimal(18, 2)");
+        e.Property(b => b.Pagu).HasColumnType("decimal(18, 2)");
 
-      //   e.Property(b => b.JumlahPls1).HasColumnType("decimal(18, 2)");
-      // });
+        e.Property(b => b.JumlahPls1).HasColumnType("decimal(18, 2)");
+      });
 
       builder.Entity<BPKDETR>(e =>
       {

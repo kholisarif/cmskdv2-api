@@ -11,6 +11,5 @@ namespace ICMSTU.API.Models.Entities
     public UnitOrganisasi UnitOrganisasi { get; set; }
     public string Kode { get; set; }
     public string Nama { get; set; }
-    //public ICollection<MKegiatan> MKegiatan { get; set; }
   }
 }

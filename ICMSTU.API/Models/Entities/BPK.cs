@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace ICMSTU.API.Models.Entities
 {
@@ -7,6 +9,7 @@ namespace ICMSTU.API.Models.Entities
   public class BPK
   {
     public string UnitKey { get; set; }
+    public List<DAFTUNIT> DAFTUNITs { get; set; }
     public string NoBPK { get; set; }
     public string KdStatus { get; set; }
     public bool? StPanjar { get; set; }
