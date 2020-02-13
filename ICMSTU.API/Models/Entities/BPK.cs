@@ -28,6 +28,7 @@ namespace ICMSTU.API.Models.Entities
     public int? KdTransfer { get; set; }
     public int? KdBayar { get; set; }
     public string KDP3 { get; set; }
+    public List<DAFTPHK> DAFTPHKs { get; set; }
     public string NMP3 { get; set; }
     public string IdBank { get; set; }
     public string NmBank { get; set; }

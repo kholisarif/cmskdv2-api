@@ -1,11 +1,13 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ICMSTU.API.Models.Entities
 {
   [Table("DAFTPHK3")]
   public class DAFTPHK
   {
+    [Key]
     public string KdP3 { get; set; }
     public string NmP3 { get; set; }
     public string NmInst { get; set; }

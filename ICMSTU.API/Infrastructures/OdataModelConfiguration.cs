@@ -34,6 +34,7 @@ namespace ICMSTU.API.Infrastructures
       builder.EntitySet<MPGRM>(nameof(MPGRM));
       builder.EntitySet<Pegawai>(nameof(Pegawai));
       builder.EntitySet<PGRMUNIT>(nameof(PGRMUNIT));
+      builder.EntitySet<MATANGR>(nameof(MATANGR));
     }
   }
 }

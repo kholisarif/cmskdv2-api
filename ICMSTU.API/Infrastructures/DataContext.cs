@@ -46,6 +46,7 @@ namespace ICMSTU.API.Infrastructures
     public DbSet<BPKDETR> BPKDETR { get; set; }
     public DbSet<MPGRM> MPGRM { get; set; }
     public DbSet<PGRMUNIT> PGRMUNIT { get; set; }
+    public DbSet<MATANGR> MATANGR { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder builder)

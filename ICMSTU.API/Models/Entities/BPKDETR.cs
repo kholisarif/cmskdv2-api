@@ -7,6 +7,7 @@ namespace ICMSTU.API.Models.Entities
   public class BPKDETR
   {
     public string MTGkey { get; set; }
+    public MATANGR MATANGR { get; set; }
     public string KdKegUnit { get; set; }
     public string NoJetra { get; set; }
     public string UnitKey { get; set; }

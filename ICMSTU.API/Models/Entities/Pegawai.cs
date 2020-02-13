@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace ICMSTU.API.Models.Entities
 {
@@ -7,6 +9,7 @@ namespace ICMSTU.API.Models.Entities
   public class Pegawai
   {
     public int Id { get; set; }
+    [Key]
     public string NIP { get; set; }
     public string KdGol { get; set; }
     public string UnitKey { get; set; }
@@ -21,5 +24,6 @@ namespace ICMSTU.API.Models.Entities
     public string NPWP { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
+     public List<BEND> BENDs { get; set; }
   }
 }

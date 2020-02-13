@@ -16,6 +16,7 @@ using ICMSTU.API.Commands.MKegiatan;
 using ICMSTU.API.Commands.MPGRM;
 using ICMSTU.API.Commands.Pegawai;
 using ICMSTU.API.Commands.PGRMUNIT;
+using ICMSTU.API.Commands.MATANGR;
 using ICMSTU.API.Dtos;
 using ICMSTU.API.Helpers;
 using ICMSTU.API.Models.Entities;
@@ -82,6 +83,9 @@ namespace ICMSTU.API.Infrastructures
 
       CreateMap<PGRMUNITCreate, PGRMUNIT>();
       CreateMap<PGRMUNITUpdate, PGRMUNIT>();
+
+      CreateMap<MATANGRCreate, MATANGR>();
+      CreateMap<MATANGRUpdate, MATANGR>();
     }
   }
 }
