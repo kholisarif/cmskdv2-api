@@ -47,6 +47,16 @@ namespace ICMSTU.API.Infrastructures
     public DbSet<MPGRM> MPGRM { get; set; }
     public DbSet<PGRMUNIT> PGRMUNIT { get; set; }
     public DbSet<MATANGR> MATANGR { get; set; }
+    public DbSet<JBAYAR> JBAYAR { get; set; }
+    public DbSet<JTRANSFER> JTRANSFER { get; set; }
+    public DbSet<JDANA> JDANA { get; set; }
+    public DbSet<BPKDETRDANA> BPKDETRDANA { get; set; }
+    public DbSet<Berita> Berita { get; set; }
+    public DbSet<BERITADETR> BERITADETR { get; set; }
+    public DbSet<SP2D> SP2D { get; set; }
+    public DbSet<DASKR> DASKR { get; set; }
+    public DbSet<Kontrak> Kontrak { get; set; }
+    public DbSet<STATTRS> STATTRS { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -218,6 +228,11 @@ namespace ICMSTU.API.Infrastructures
         e.Property(b => b.SaldoBendT).HasColumnType("decimal(18, 2)");
       });
 
+      builder.Entity<BERITADETR>(e =>
+      {
+        e.Property(b => b.Nilai).HasColumnType("decimal(18, 2)");
+      });
+
       // builder.Entity<PGRMUNIT>()
       //       .HasKey(t => new { t.UnitKey, t.IdPrgrm });
 
@@ -253,6 +268,26 @@ namespace ICMSTU.API.Infrastructures
       builder.Entity<BPKDETR>(e =>
       {
         e.Property(b => b.Nilai).HasColumnType("decimal(18, 2)");
+      });
+
+      builder.Entity<BPKDETRDANA>(e =>
+      {
+        e.Property(b => b.Nilai).HasColumnType("decimal(18, 2)");
+      });
+
+      builder.Entity<DASKR>(e =>
+      {
+        e.Property(b => b.Nilai).HasColumnType("decimal(18, 2)");
+      });
+
+      builder.Entity<Kontrak>(e =>
+      {
+        e.Property(b => b.Nilai).HasColumnType("decimal(18, 2)");
+      });
+
+      builder.Entity<JTRANSFER>(e =>
+      {
+        e.Property(b => b.MinNominal).HasColumnType("decimal(18, 2)");
       });
 
       builder.Entity<SKUP>(e =>

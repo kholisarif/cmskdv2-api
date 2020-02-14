@@ -12,11 +12,21 @@ using ICMSTU.API.Commands.DAFTUNIT;
 using ICMSTU.API.Commands.DAFTPHK;
 using ICMSTU.API.Commands.KEGUNIT;
 using ICMSTU.API.Commands.BPKDETR;
+using ICMSTU.API.Commands.BPKDETRDANA;
 using ICMSTU.API.Commands.MKegiatan;
 using ICMSTU.API.Commands.MPGRM;
 using ICMSTU.API.Commands.Pegawai;
 using ICMSTU.API.Commands.PGRMUNIT;
 using ICMSTU.API.Commands.MATANGR;
+using ICMSTU.API.Commands.JBAYAR;
+using ICMSTU.API.Commands.JTRANSFER;
+using ICMSTU.API.Commands.JDANA;
+using ICMSTU.API.Commands.Berita;
+using ICMSTU.API.Commands.BERITADETR;
+using ICMSTU.API.Commands.SP2D;
+using ICMSTU.API.Commands.DASKR;
+using ICMSTU.API.Commands.Kontrak;
+using ICMSTU.API.Commands.STATTRS;
 using ICMSTU.API.Dtos;
 using ICMSTU.API.Helpers;
 using ICMSTU.API.Models.Entities;
@@ -72,6 +82,9 @@ namespace ICMSTU.API.Infrastructures
       CreateMap<BPKDETRCreate, BPKDETR>();
       CreateMap<BPKDETRUpdate, BPKDETR>();
 
+      CreateMap<BPKDETRDANACreate, BPKDETRDANA>();
+      CreateMap<BPKDETRDANAUpdate, BPKDETRDANA>();
+
       CreateMap<MKegiatanCreate, MKegiatan>();
       CreateMap<MKegiatanUpdate, MKegiatan>();
 
@@ -86,6 +99,33 @@ namespace ICMSTU.API.Infrastructures
 
       CreateMap<MATANGRCreate, MATANGR>();
       CreateMap<MATANGRUpdate, MATANGR>();
+
+      CreateMap<JBAYARCreate, JBAYAR>();
+      CreateMap<JBAYARUpdate, JBAYAR>();
+
+      CreateMap<JTRANSFERCreate, JTRANSFER>();
+      CreateMap<JTRANSFERUpdate, JTRANSFER>();
+
+      CreateMap<JDANACreate, JDANA>();
+      CreateMap<JDANAUpdate, JDANA>();
+
+      CreateMap<BeritaCreate, Berita>();
+      CreateMap<BeritaUpdate, Berita>();
+
+      CreateMap<BERITADETRCreate, BERITADETR>();
+      CreateMap<BERITADETRUpdate, BERITADETR>();
+
+      CreateMap<SP2DCreate, SP2D>();
+      CreateMap<SP2DUpdate, SP2D>();
+
+      CreateMap<DASKRCreate, DASKR>();
+      CreateMap<DASKRUpdate, DASKR>();
+
+      CreateMap<KontrakCreate, Kontrak>();
+      CreateMap<KontrakUpdate, Kontrak>();
+
+      CreateMap<STATTRSCreate, STATTRS>();
+      CreateMap<STATTRSUpdate, STATTRS>();
     }
   }
 }
