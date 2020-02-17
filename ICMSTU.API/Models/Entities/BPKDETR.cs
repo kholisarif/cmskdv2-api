@@ -14,6 +14,7 @@ namespace ICMSTU.API.Models.Entities
     public string UnitKey { get; set; }
     public DAFTUNIT DAFTUNIT { get; set; }
     public string NoBPK { get; set; }
+    public BPK BPK { get; set; }
     public Decimal? Nilai { get; set; }
     public int Id { get; set; }
     public DateTime? DateCreate { get; set; }

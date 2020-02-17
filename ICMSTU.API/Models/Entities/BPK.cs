@@ -10,6 +10,7 @@ namespace ICMSTU.API.Models.Entities
   {
     public string UnitKey { get; set; }
     public List<DAFTUNIT> DAFTUNITs { get; set; }
+    [Key]
     public string NoBPK { get; set; }
     public string KdStatus { get; set; }
     public bool? StPanjar { get; set; }
@@ -40,5 +41,6 @@ namespace ICMSTU.API.Models.Entities
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
     public string NoBerita { get; set; }
+    public List<BPKDETR> BPKDETRs { get; set; }
   }
 }
