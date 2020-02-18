@@ -13,6 +13,7 @@ namespace ICMSTU.API.Models.Entities
     public string NIP { get; set; }
     public string KdGol { get; set; }
     public string UnitKey { get; set; }
+    public DAFTUNIT DAFTUNIT { get; set; }
     public string Nama { get; set; }
     //public int GolonganId { get; set; }
     //public Golongan Golongan { get; set; }

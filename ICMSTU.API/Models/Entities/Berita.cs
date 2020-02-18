@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ICMSTU.API.Models.Entities
 {
@@ -8,6 +9,8 @@ namespace ICMSTU.API.Models.Entities
   public class Berita
   {
     public string UnitKey { get; set; }
+    // public DAFTUNIT DAFTUNIT { get; set; }
+    [Key]
     public string NoBA { get; set; }
     public DateTime? TglBA { get; set; }
     public string KdKegUnit { get; set; }
@@ -20,5 +23,6 @@ namespace ICMSTU.API.Models.Entities
     public DateTime? DateUpdate { get; set; }
     public string NoKontrak { get; set; }
     public string NoBerita{ get; set; }
+     public List<BPK> BPKs { get; set; }
   }
 }
