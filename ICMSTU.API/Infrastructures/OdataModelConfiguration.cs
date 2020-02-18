@@ -45,6 +45,9 @@ namespace ICMSTU.API.Infrastructures
       builder.EntitySet<DASKR>(nameof(DASKR));
       builder.EntitySet<Kontrak>(nameof(Kontrak));
       builder.EntitySet<STATTRS>(nameof(STATTRS));
+      builder.EntitySet<JCAIR>(nameof(JCAIR));
+      builder.EntitySet<JKIRIM>(nameof(JKIRIM));
+      builder.EntitySet<JTRNLKAS>(nameof(JTRNLKAS));
     }
   }
 }

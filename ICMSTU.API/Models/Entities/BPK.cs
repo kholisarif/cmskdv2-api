@@ -40,7 +40,9 @@ namespace ICMSTU.API.Models.Entities
     public string NoRef { get; set; }
     public int? KdRilis { get; set; }
     public int? StKirim { get; set; }
+    public JKIRIM JKIRIM { get; set; }
     public int? StCair { get; set; }
+    public JCAIR JCAIR { get; set; }
     public DateTime? TglBuku { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }

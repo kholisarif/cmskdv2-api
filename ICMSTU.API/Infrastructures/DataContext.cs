@@ -57,6 +57,9 @@ namespace ICMSTU.API.Infrastructures
     public DbSet<DASKR> DASKR { get; set; }
     public DbSet<Kontrak> Kontrak { get; set; }
     public DbSet<STATTRS> STATTRS { get; set; }
+    public DbSet<JCAIR> JCAIR { get; set; }
+    public DbSet<JKIRIM> JKIRIM { get; set; }
+    public DbSet<JTRNLKAS> JTRNLKAS { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder builder)

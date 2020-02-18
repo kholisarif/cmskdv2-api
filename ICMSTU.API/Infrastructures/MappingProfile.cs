@@ -27,6 +27,9 @@ using ICMSTU.API.Commands.SP2D;
 using ICMSTU.API.Commands.DASKR;
 using ICMSTU.API.Commands.Kontrak;
 using ICMSTU.API.Commands.STATTRS;
+using ICMSTU.API.Commands.JCAIR;
+using ICMSTU.API.Commands.JKIRIM;
+using ICMSTU.API.Commands.JTRNLKAS;
 using ICMSTU.API.Dtos;
 using ICMSTU.API.Helpers;
 using ICMSTU.API.Models.Entities;
@@ -126,6 +129,15 @@ namespace ICMSTU.API.Infrastructures
 
       CreateMap<STATTRSCreate, STATTRS>();
       CreateMap<STATTRSUpdate, STATTRS>();
+
+      CreateMap<JCAIRCreate, JCAIR>();
+      CreateMap<JCAIRUpdate, JCAIR>();
+
+      CreateMap<JKIRIMCreate, JKIRIM>();
+      CreateMap<JKIRIMUpdate, JKIRIM>();
+
+      CreateMap<JTRNLKASCreate, JTRNLKAS>();
+      CreateMap<JTRNLKASUpdate, JTRNLKAS>();
     }
   }
 }

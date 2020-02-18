@@ -11,6 +11,7 @@ namespace ICMSTU.API.Models.Entities
     public string KdKegUnit { get; set; }
     public MKegiatan MKegiatan { get; set; }
     public string NoJetra { get; set; }
+    public JTRNLKAS JTRNLKAS { get; set; }
     public string UnitKey { get; set; }
     public DAFTUNIT DAFTUNIT { get; set; }
     public string NoBPK { get; set; }
