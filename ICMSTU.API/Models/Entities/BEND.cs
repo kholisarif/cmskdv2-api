@@ -20,6 +20,7 @@ namespace ICMSTU.API.Models.Entities
     public string RekBend{ get; set; }
     public decimal? SaldoBend { get; set; }
     public string NPWPBend { get; set; }
+    [Column(TypeName="Date")]
     public DateTime? TglStopBend { get; set; }
     public decimal? SaldoBendT { get; set; }
     public int Id { get; set; }

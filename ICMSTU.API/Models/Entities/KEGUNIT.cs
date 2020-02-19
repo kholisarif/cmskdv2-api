@@ -18,7 +18,9 @@ namespace ICMSTU.API.Models.Entities
     public int NoPrior { get; set; }
     public string KdSifat { get; set; }
     public string NIP { get; set; }
+    [Column(TypeName="Date")]
     public DateTime? TglAkhir { get; set; }
+    [Column(TypeName="Date")]
     public DateTime? TglAwal { get; set; }
     public Decimal? TargetP { get; set; }
     public int Id { get; set; }

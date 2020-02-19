@@ -12,11 +12,13 @@ namespace ICMSTU.API.Models.Entities
     // public DAFTUNIT DAFTUNIT { get; set; }
     [Key]
     public string NoBA { get; set; }
+    [Column(TypeName="Date")]
     public DateTime? TglBA { get; set; }
     public string KdKegUnit { get; set; }
     public string NoKon { get; set; }
     public Kontrak Kontrak { get; set; }
     public string UraiBA { get; set; }
+    [Column(TypeName="Date")]
     public DateTime? TglValid { get; set; }
     public string KdStatus{ get; set; }
     public STATTRS STATTRS { get; set; }

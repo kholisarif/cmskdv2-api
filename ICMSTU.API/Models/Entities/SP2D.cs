@@ -21,8 +21,11 @@ namespace ICMSTU.API.Models.Entities
     public string NoKontrak { get; set; }
     public string Keperluan { get; set; }
     public string Penolakan { get; set; }
+    [Column(TypeName="Date")]
     public DateTime? TglValid { get; set; }
+    [Column(TypeName="Date")]
     public DateTime? TglSP2D { get; set; }
+    [Column(TypeName="Date")]
     public DateTime? TglSPM { get; set; }
     public string NoBBantu { get; set; }
     public int Id { get; set; }

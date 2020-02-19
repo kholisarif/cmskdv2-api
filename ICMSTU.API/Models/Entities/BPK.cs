@@ -23,6 +23,7 @@ namespace ICMSTU.API.Models.Entities
     public DateTime? TglBPK { get; set; }
     public string Penerima { get; set; }
     public string UraiBPK { get; set; }
+    [Column(TypeName="Date")]
     public DateTime? TglValid { get; set; }
     public string NoBA { get; set; }
     public Berita Berita { get; set; }
@@ -44,6 +45,7 @@ namespace ICMSTU.API.Models.Entities
     public JKIRIM JKIRIM { get; set; }
     public int? StCair { get; set; }
     public JCAIR JCAIR { get; set; }
+    [Column(TypeName="Date")]
     public DateTime? TglBuku { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }

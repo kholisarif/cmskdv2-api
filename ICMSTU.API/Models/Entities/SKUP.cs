@@ -9,6 +9,7 @@ namespace ICMSTU.API.Models.Entities
   {
     public int Id { get; set; }
     public string NoSK { get; set; }
+    [Column(TypeName="Date")]
     public DateTime? TglSK { get; set; }
     public string Keperluan { get; set; }
     public List<SKUPDet> SKUPDet { get; set; }
