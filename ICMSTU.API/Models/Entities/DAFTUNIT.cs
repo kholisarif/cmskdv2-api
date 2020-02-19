@@ -21,5 +21,9 @@ namespace ICMSTU.API.Models.Entities
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
     public List<PGRMUNIT> PGRMUNITs { get; set; }
+    public List<BPKDETR> BPKDETRs { get; set; }
+    public List<BPK> BPKs { get; set; }
+    public List<BEND> BENDs { get; set; }
+    public List<Pegawai> Pegawais { get; set; }
   }
 }

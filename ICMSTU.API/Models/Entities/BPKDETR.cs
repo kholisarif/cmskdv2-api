@@ -9,9 +9,13 @@ namespace ICMSTU.API.Models.Entities
     public string MTGkey { get; set; }
     public MATANGR MATANGR { get; set; }
     public string KdKegUnit { get; set; }
+    public MKegiatan MKegiatan { get; set; }
     public string NoJetra { get; set; }
+    public JTRNLKAS JTRNLKAS { get; set; }
     public string UnitKey { get; set; }
+    public DAFTUNIT DAFTUNIT { get; set; }
     public string NoBPK { get; set; }
+    public BPK BPK { get; set; }
     public Decimal? Nilai { get; set; }
     public int Id { get; set; }
     public DateTime? DateCreate { get; set; }

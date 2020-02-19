@@ -30,11 +30,24 @@ namespace ICMSTU.API.Infrastructures
       builder.EntitySet<DAFTPHK>(nameof(DAFTPHK));
       builder.EntitySet<KEGUNIT>(nameof(KEGUNIT));
       builder.EntitySet<BPKDETR>(nameof(BPKDETR));
+      builder.EntitySet<BPKDETRDANA>(nameof(BPKDETRDANA));
       builder.EntitySet<MKegiatan>(nameof(MKegiatan));
       builder.EntitySet<MPGRM>(nameof(MPGRM));
       builder.EntitySet<Pegawai>(nameof(Pegawai));
       builder.EntitySet<PGRMUNIT>(nameof(PGRMUNIT));
       builder.EntitySet<MATANGR>(nameof(MATANGR));
+      builder.EntitySet<JBAYAR>(nameof(JBAYAR));
+      builder.EntitySet<JTRANSFER>(nameof(JTRANSFER));
+      builder.EntitySet<JDANA>(nameof(JDANA));
+      builder.EntitySet<Berita>(nameof(Berita));
+      builder.EntitySet<BERITADETR>(nameof(BERITADETR));
+      builder.EntitySet<SP2D>(nameof(SP2D));
+      builder.EntitySet<DASKR>(nameof(DASKR));
+      builder.EntitySet<Kontrak>(nameof(Kontrak));
+      builder.EntitySet<STATTRS>(nameof(STATTRS));
+      builder.EntitySet<JCAIR>(nameof(JCAIR));
+      builder.EntitySet<JKIRIM>(nameof(JKIRIM));
+      builder.EntitySet<JTRNLKAS>(nameof(JTRNLKAS));
     }
   }
 }

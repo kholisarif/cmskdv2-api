@@ -15,6 +15,7 @@ namespace ICMSTU.API.Models.Entities
     public int? KegiatanUnitId { get; set; }
     public KegiatanUnit KegiatanUnit { get; set; }
     public int? NoPengajuan { get; set; }
+    [Column(TypeName="Date")]
     public DateTime? TglPengajuan { get; set; }
     public string NoRegister { get; set; }
     public string Keperluan { get; set; }
