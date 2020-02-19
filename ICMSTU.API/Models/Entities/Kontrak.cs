@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ICMSTU.API.Models.Entities
 {
@@ -8,6 +9,7 @@ namespace ICMSTU.API.Models.Entities
   public class Kontrak
   {
     public string UnitKey { get; set; }
+    [Key]
     public string NoKon { get; set; }
     public string Kdp3 { get; set; }
     public string KdKegUnit { get; set; }
