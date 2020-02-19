@@ -19,6 +19,7 @@ namespace ICMSTU.API.Models.Entities
     public int IdxKode { get; set; }
     public string KeyBend { get; set; }
     public BEND BEND { get; set; }
+    [Column(TypeName="Date")]
     public DateTime? TglBPK { get; set; }
     public string Penerima { get; set; }
     public string UraiBPK { get; set; }
