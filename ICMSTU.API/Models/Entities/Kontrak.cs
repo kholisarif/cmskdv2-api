@@ -12,6 +12,7 @@ namespace ICMSTU.API.Models.Entities
     [Key]
     public string NoKon { get; set; }
     public string Kdp3 { get; set; }
+    public DAFTPHK DAFTPHK { get; set; }
     public string KdKegUnit { get; set; }
     public DateTime? TglKon { get; set; }
     public DateTime? TglSlsKonk { get; set; }
