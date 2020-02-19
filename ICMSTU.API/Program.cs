@@ -8,7 +8,7 @@ namespace ICMSTU.API
     public static void Main(string[] args)
     {
       CreateWebHostBuilder(args).Build().Run();
-      //test 8
+      //test 9
     }
 
     public static IWebHostBuilder CreateWebHostBuilder(string[] args)
