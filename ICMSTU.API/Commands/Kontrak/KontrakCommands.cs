@@ -7,21 +7,37 @@ namespace ICMSTU.API.Commands.Kontrak
 {
   public class KontrakCreate : IRequest<Models.Entities.Kontrak>
   {
-    public int KdTransfer { get; set; }
-    public string NmTransfer { get; set; }
-    public string UraianTrans { get; set; }
-    public Decimal? MinNominal { get; set; }
-    public string FlagsNom { get; set; }
+    public string UnitKey { get; set; }
+    public string NoKon { get; set; }
+    public string Kdp3 { get; set; }
+    public string KdKegUnit { get; set; }
+    public DateTime? TglKon { get; set; }
+    public DateTime? TglSlsKonk { get; set; }
+    public string Uraian { get; set; }
+    public Decimal? Nilai { get; set; }
+    public DateTime? DateCreate { get; set; }
+    public DateTime? DateUpdate { get; set; }
+    public string NoKontrak { get; set; }
+    public DateTime? TglAwalKontrak { get; set; }
+    public DateTime? TglAkhirKontrak { get; set; }
   }
 
   public class KontrakUpdate : IRequest<Models.Entities.Kontrak>
   {
-    public int KdTransfer { get; set; }
-    public string NmTransfer { get; set; }
-    public string UraianTrans { get; set; }
+    public string UnitKey { get; set; }
+    public string NoKon { get; set; }
+    public string Kdp3 { get; set; }
+    public string KdKegUnit { get; set; }
+    public DateTime? TglKon { get; set; }
+    public DateTime? TglSlsKonk { get; set; }
+    public string Uraian { get; set; }
+    public Decimal? Nilai { get; set; }
     public int Id { get; set; }
-    public Decimal? MinNominal { get; set; }
-    public string FlagsNom { get; set; }
+    public DateTime? DateCreate { get; set; }
+    public DateTime? DateUpdate { get; set; }
+    public string NoKontrak { get; set; }
+    public DateTime? TglAwalKontrak { get; set; }
+    public DateTime? TglAkhirKontrak { get; set; }
   }
 
   public class KontrakDelete : IRequest
