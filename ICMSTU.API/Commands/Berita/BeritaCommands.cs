@@ -12,9 +12,11 @@ namespace ICMSTU.API.Commands.Berita
     public DateTime? TglBA { get; set; }
     public string KdKegUnit { get; set; }
     public string NoKon { get; set; }
+    public int IdKontrak { get; set; }
     public string UraiBA { get; set; }
     public DateTime? TglValid { get; set; }
     public string KdStatus{ get; set; }
+    public int IdSTATTRS { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
     public string NoKontrak { get; set; }
