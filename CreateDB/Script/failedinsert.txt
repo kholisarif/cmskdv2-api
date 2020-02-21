@@ -1,0 +1,56 @@
+failed:
+APPLOG
+APPCONFIG
+JURNAL_ROLE
+
+create proc dbo.WSP_BACKUPDBUTL
+create proc dbo.WSP_CEKBKUPENGELUARAN
+create proc dbo.WSP_CEKBUD
+create proc dbo.WSP_CEKTRANSAKSI
+create proc dbo.WSP_COPYKEGIATAN
+create proc dbo.WSP_COPYREK
+create proc dbo.WSP_COPYREKB
+create proc dbo.WSP_COPYREKD
+create proc dbo.WSP_COPYREKTL
+create proc dbo.WSP_COPYRKA
+create proc dbo.WSP_EXPORTKOLOLARI
+create proc dbo.WSP_EXPORTMEMORIAL
+create proc dbo.WSP_EXPORTSALDOAKHIR
+create proc dbo.WSP_EXPORTSALDOAWAL
+create proc dbo.WSP_EXPORTSIE
+create proc dbo.WSP_EXPORTSIKD
+create proc dbo.WSP_IMPORTKOLOLARI
+create proc dbo.WSP_IMPORTMEMORIAL
+create proc dbo.WSP_IMPORTSALDOAWAL
+create proc dbo.WSP_MONEVLPSE
+create proc dbo.WSP_RESTOREDB
+create proc dbo.WSP_VALIDATION_PAGUSKPD
+create proc dbo.WSP_VALIDATION_PAGUSKPD_RASKDET
+create proc dbo.WSP_VALIDATION_PJBR_PAGUKEG
+create proc dbo.WSP_VALIDATION_PJBR_ROB
+create proc dbo.WSP_VALIDATION_SBDANAB_REK_DPA
+create proc dbo.WSP_VALIDATION_SBDANAD_REK
+create proc dbo.WSP_VALIDATION_SBDANAR_REK
+create proc dbo.WSP_VALIDATION_SBDANAR_REK_DPA
+create proc dbo.WSP_VALIDATION_SBDANARTL_REK
+create proc dbo.WSP_VALIDATION_SBDANARTL_REK_DPA
+create proc dbo.WSP_VALIDATION_SBDANASP2DB_REK
+create proc dbo.WSP_VALIDATION_SBDANASP2DR_REK
+create proc dbo.WSP_VALIDATION_SBDANASP2DRTL_REK
+create proc dbo.WSP_WebTransfer
+create proc dbo.WSP_WebTransferSKPD
+create proc dbo.WSPI_CEKSPHDM
+create proc dbo.WSPR_DAFTPAKET
+create proc dbo.WSPR_KINKEGMONEV
+create proc dbo.WSPR_MONEV*
+create proc dbo.WSPR_PROBLEMSOLISISIEP
+create proc dbo.WSPR_REALMONEV
+create proc dbo.WSPR_REALMONEVwDANA
+create proc CREATE_DEFAULT_OTOR
+create procedure [dbo].[CREATE_DEFAULT_OTOR_MONEV]
+CREATE procedure [dbo].[IMPORT_ROLE]
+CREATE PROCEDURE [dbo].[WS_GET_ASET_BERITA_AFTERINS]
+
+
+
+
