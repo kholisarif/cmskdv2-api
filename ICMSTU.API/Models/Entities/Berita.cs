@@ -16,11 +16,15 @@ namespace ICMSTU.API.Models.Entities
     public DateTime? TglBA { get; set; }
     public string KdKegUnit { get; set; }
     public string NoKon { get; set; }
+    public int IdKontrak { get; set; }
+    [ForeignKey("IdKontrak")]
     public Kontrak Kontrak { get; set; }
     public string UraiBA { get; set; }
     [Column(TypeName="Date")]
     public DateTime? TglValid { get; set; }
     public string KdStatus{ get; set; }
+    public int IdSTATTRS { get; set; }
+    [ForeignKey("IdSTATTRS")]
     public STATTRS STATTRS { get; set; }
     public int Id { get; set; }
     public DateTime? DateCreate { get; set; }
