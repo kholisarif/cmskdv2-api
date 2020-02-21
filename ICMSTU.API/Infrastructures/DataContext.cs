@@ -314,11 +314,6 @@ namespace ICMSTU.API.Infrastructures
       {
         e.HasKey(o => new { o.UnitKey, o.NoBPK });
       });
-
-      // builder.Entity<Berita>(e =>
-      // {
-      //   e.HasKey(o => new { o.UnitKey, o.NoBA });
-      // });
     }
   }
 }
