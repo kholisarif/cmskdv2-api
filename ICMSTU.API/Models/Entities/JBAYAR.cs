@@ -7,9 +7,10 @@ namespace ICMSTU.API.Models.Entities
   [Table("JBAYAR")]
   public class JBAYAR
   {
-    [Key]
+    
     public int KdBayar { get; set; }
     public string UraianBayar { get; set; }
+    [Key]
     public int Id { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }

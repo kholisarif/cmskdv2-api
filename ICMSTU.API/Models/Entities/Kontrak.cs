@@ -9,9 +9,9 @@ namespace ICMSTU.API.Models.Entities
   public class Kontrak
   {
     public string UnitKey { get; set; }
-    [Key]
     public string NoKon { get; set; }
-    public string Kdp3 { get; set; }
+    [ForeignKey("DAFTPHK")]
+    public string KdP3 { get; set; }
     public DAFTPHK DAFTPHK { get; set; }
     public string KdKegUnit { get; set; }
     [Column(TypeName="Date")]
@@ -20,6 +20,7 @@ namespace ICMSTU.API.Models.Entities
     public DateTime? TglSlsKonk { get; set; }
     public string Uraian { get; set; }
     public Decimal? Nilai { get; set; }
+    [Key]
     public int Id { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
