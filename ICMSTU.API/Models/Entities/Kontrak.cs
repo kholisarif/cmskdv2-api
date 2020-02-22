@@ -10,8 +10,9 @@ namespace ICMSTU.API.Models.Entities
   {
     public string UnitKey { get; set; }
     public string NoKon { get; set; }
-    [ForeignKey("DAFTPHK")]
     public string KdP3 { get; set; }
+    public int IdDAFTPHK3 { get; set; }
+    [ForeignKey("IdDAFTPHK3")]
     public DAFTPHK DAFTPHK { get; set; }
     public string KdKegUnit { get; set; }
     [Column(TypeName="Date")]

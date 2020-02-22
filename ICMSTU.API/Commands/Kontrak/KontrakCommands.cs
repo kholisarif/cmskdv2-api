@@ -10,6 +10,7 @@ namespace ICMSTU.API.Commands.Kontrak
     public string UnitKey { get; set; }
     public string NoKon { get; set; }
     public string Kdp3 { get; set; }
+    public int IdDAFTPHK3 { get; set; }
     public string KdKegUnit { get; set; }
     public DateTime? TglKon { get; set; }
     public DateTime? TglSlsKonk { get; set; }

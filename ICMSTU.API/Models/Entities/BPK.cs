@@ -12,7 +12,7 @@ namespace ICMSTU.API.Models.Entities
     public DAFTUNIT DAFTUNIT { get; set; }
     public string NoBPK { get; set; }
     public string KdStatus { get; set; }
-    public STATTRS STATTRS { get; set; }
+    // public STATTRS STATTRS { get; set; }
     public bool? StPanjar { get; set; }
     public bool? StTunai { get; set; }
     public bool? StBank { get; set; }
@@ -33,7 +33,7 @@ namespace ICMSTU.API.Models.Entities
     public int? KdTransfer { get; set; }
     public JTRANSFER JTRANSFER { get; set; }
     public int? KdBayar { get; set; }
-    public JBAYAR JBAYAR { get; set; }
+    // public JBAYAR JBAYAR { get; set; }
     public string KDP3 { get; set; }
     public DAFTPHK DAFTPHK { get; set; }
     public string NMP3 { get; set; }

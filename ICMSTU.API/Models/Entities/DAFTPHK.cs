@@ -1,13 +1,13 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace ICMSTU.API.Models.Entities
 {
   [Table("DAFTPHK3")]
   public class DAFTPHK
   {
-    [Key]
     public string KdP3 { get; set; }
     public string NmP3 { get; set; }
     public string NmInst { get; set; }
@@ -18,6 +18,7 @@ namespace ICMSTU.API.Models.Entities
     public string Telepon { get; set; }
     public string NPWP { get; set; }
     public string UnitKey { get; set; }
+    [Key]
     public int Id { get; set; }
     public string WargaNegara { get; set; }
     public string StPenduduk { get; set; }
@@ -30,5 +31,6 @@ namespace ICMSTU.API.Models.Entities
     public int? IsLock { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
+    public List<Kontrak> Kontraks { get; set; }
   }
 }
