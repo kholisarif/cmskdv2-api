@@ -11,15 +11,18 @@ namespace ConvertDBKeyToID.Models
   public class Constrain
   {
     public string Name { get; set; }
+    public string Type { get; set; }
     public List<string> Cols = new List<string>();
   }
   public class Table
   {
     public string Name {get;set;}
-    public Constrain PK_Constrains = new Constrain();
+    public List<Constrain> Constraints = new List<Constrain>();
+
     public List<string> Cols = new List<string>();
     public bool isIDColExist = false;
-    public bool isIDColPK = false; 
+    public bool isIDColPK = false;
+
   }
 
   public class Relationship
@@ -29,6 +32,7 @@ namespace ConvertDBKeyToID.Models
     public List<string> TableCols = new List<string>();
     public string RefrencedTable { get; set; }
     public List<string> RefrencedTableCols = new List<string>();
+    public bool NeedRebuild = false;
 
   }
 }

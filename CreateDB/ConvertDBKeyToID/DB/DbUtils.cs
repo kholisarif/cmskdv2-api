@@ -6,13 +6,30 @@ using System.Data;
 using System.Data.SqlClient;
 using ConvertDBKeyToID.Models;
 using Dapper;
+using MiniProfiler.Integrations;
+using System.Threading;
 
 namespace ConvertDBKeyToID.DB
 {
   public class DbUtils
   {
-    public static string conStr = "Data Source=.;Initial Catalog=V@LID49V6_CMS_2020;User id = sa; password = password123!";
-    public static string qAllTables = string.Format(@"SELECT upper(TABLE_NAME) as Name FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME NOT LIKE 'sys%'");
+    public static CustomDbProfiler profiler = CustomDbProfiler.Current;
+    public delegate void logDelegate(string logText);
+    public static event logDelegate OnLog;
+
+
+    public static string conStr = "Data Source=.;Initial Catalog=V@LID49v6_cms_2020;User id = sa; password = password123!";
+    public static string qAllTables = @"SELECT upper(TABLE_NAME) as Name FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME NOT LIKE 'sys%' AND TABLE_TYPE = 'BASE TABLE'";
+    public static string qAllColumns = @"SELECT TABLE_NAME, COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME NOT LIKE 'SYS%' ORDER BY TABLE_NAME, ORDINAL_POSITION";
+    public static string qContraints = @"SELECT tc.TABLE_NAME, tc.CONSTRAINT_NAME , ccu.COLUMN_NAME, tc.CONSTRAINT_TYPE
+                                          FROM
+                                              INFORMATION_SCHEMA.TABLE_CONSTRAINTS AS tc
+                                              JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE AS ccu ON ccu.CONSTRAINT_NAME = tc.CONSTRAINT_NAME
+                                          WHERE
+                                              (TC.CONSTRAINT_TYPE = 'UNIQUE' OR TC.CONSTRAINT_TYPE = 'PRIMARY KEY') AND TC.TABLE_NAME NOT LIKE 'sys%'
+                                          ORDER BY TABLE_NAME, CONSTRAINT_NAME
+                                          ";
+
     public static string qPK = @"SELECT TABLE_NAME, CONSTRAINT_NAME CONSTNAME, COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
                                 WHERE OBJECTPROPERTY(OBJECT_ID(CONSTRAINT_SCHEMA + '.' + QUOTENAME(CONSTRAINT_NAME)), 'IsPrimaryKey') = 1";
 
@@ -42,74 +59,131 @@ namespace ConvertDBKeyToID.DB
 
     public static IDbConnection GetConnection()
     {
-      return new SqlConnection(conStr);
+      var factory = new SqlServerDbConnectionFactory(conStr);
+      var conn = DbConnectionFactoryHelper.New(factory, profiler);
+      return conn;
     }
 
-    public static List<Table> GetTables(IDbConnection con)
+    private static void LogLatestSqlCommand()
     {
+      Log(profiler.ProfilerContext.ExecutedCommands.Last());
+      //Log(profiler.ProfilerContext.FailedCommands.Last());
+    }
 
-      // Rename Column ID in 'JURNAL_ROLE'
-      con.Execute("exec sp_RENAME 'JURNAL_ROLE.ID', 'IDJR', 'COLUMN'",null,null,60);
+    private static void LogLatestSqlCommandFailed()
+    {
+      //Log(profiler.ProfilerContext.ExecutedCommands.Last());
+      Log(profiler.ProfilerContext.FailedCommands.Last());
+    }
 
-
-      var tbls = new List<Table>();
-      Dictionary<string, Constrain> kk = new Dictionary<string, Constrain>();
-      IEnumerable<dynamic> pks = con.Query<dynamic>(qPK).ToList();
-      foreach(var r in pks)
+    private static void Log(string logText)
+    {
+      if (OnLog != null)
       {
-        var f = r as IDictionary<string, object>;
-        var tbname = f["TABLE_NAME"].ToString();
-        var konstname = f["CONSTNAME"].ToString();
-        var col = f["COLUMN_NAME"].ToString();
-        var tb = tbls.Find(i => i.Name == tbname);
+        OnLog(logText);
+        Thread.Yield();
+      }
+    }
+
+    public static void ConvertKeyToID(IDbConnection con, IDbTransaction tran)
+    {
+      var tbls = new List<Table>();
+      var rels = new List<Relationship>(); //tb.Relationships;
+
+      //
+      con.Execute("ALTER AUTHORIZATION ON SCHEMA::SIE TO db_owner", null, tran, 60);
+      LogLatestSqlCommand();
+      // Rename Column ID in 'JURNAL_ROLE'
+      try
+      {
+        con.Execute("exec sp_RENAME 'JURNAL_ROLE.ID', 'IDJR', 'COLUMN'", null, tran, 60);
+        LogLatestSqlCommand();
+      }
+      catch
+      {
+        Log("JURNAL_ROLE.ID already renamed to JURNAL_ROLE.IDJR");
+        LogLatestSqlCommandFailed();
+      }
+
+      IEnumerable<dynamic> cols = con.Query<dynamic>(qAllColumns, null, tran).ToList();
+      LogLatestSqlCommand();
+      foreach (var col in cols)
+      {
+        var f = col as IDictionary<string, object>;
+        var tbName = f["TABLE_NAME"].ToString();
+        var colName = f["COLUMN_NAME"].ToString();
+        var tb = tbls.Find(i => i.Name == tbName);
         if (tb == null)
         {
           tb = new Table();
-          tb.Name = tbname;
-          tb.PK_Constrains.Name = konstname;
+          tb.Name = tbName;
           tbls.Add(tb);
         }
-        if (!tb.PK_Constrains.Cols.Contains(col))
+        var c = tb.Cols.Find(i => i == colName);
+        if (c == null)
         {
-          tb.PK_Constrains.Cols.Add(col);
+          tb.Cols.Add(colName);
         }
       }
 
-      
-      // collect columns and add AK
+
+      IEnumerable<dynamic> constraints = con.Query<dynamic>(qContraints, null, tran).ToList();
+      LogLatestSqlCommand();
+
+      foreach (var r in constraints)
+      {
+        var f = r as IDictionary<string, object>;
+        var tbName = f["TABLE_NAME"].ToString();
+        var consName = f["CONSTRAINT_NAME"].ToString();
+        var colName = f["COLUMN_NAME"].ToString();
+        var consType = f["CONSTRAINT_TYPE"].ToString();
+        var tb = tbls.Find(i => i.Name == tbName);
+        var constraint = tb.Constraints.Find(i => i.Name == consName);
+        if (constraint == null)
+        {
+          constraint = new Constrain();
+          constraint.Name = consName;
+          constraint.Type = consType;
+          tb.Constraints.Add(constraint);
+        }
+        constraint.Cols.Add(colName);
+      }
+
+
       foreach (var tb in tbls)
       {
-        // 1. collect columns
-        tb.Cols = con.Query<string>(string.Format(qCols,tb.Name)).ToList<string>();
-        
-        // 1. cek if ID column exist
-        var id = tb.Cols.Find(i => i.ToUpper() == "ID");
-        if (id != null)
+
+        // find id column and add if not found
+        if (tb.Cols.Find(i => i.ToUpper() == "ID") == null)
         {
-          tb.isIDColExist = true;
-          // if ID is PK
-          if (tb.PK_Constrains.Cols.Count == 1 && tb.PK_Constrains.Cols[0].ToUpper() == "ID")
+          try
           {
-            tb.isIDColPK = true;
-            continue;
+            con.Execute(string.Format("ALTER TABLE [{0}] ADD [ID] bigint IDENTITY(1,1)", tb.Name), null, tran);
+            LogLatestSqlCommand();
+            tb.Cols.Add("ID");
+            tb.isIDColExist = true;
+          }
+          catch (Exception ex)
+          {
+            Log("Failed to Add ID Col " );
+            LogLatestSqlCommandFailed();
           }
         }
 
-        // 1. Add AK
-        string addAK = string.Format("ALTER TABLE {0} ADD CONSTRAINT AK_{1} UNIQUE (",tb.Name, tb.PK_Constrains.Name);
-        foreach(string s in tb.PK_Constrains.Cols)
+
+        // find PK and check if column name == ID
+        var pk = tb.Constraints.Find(i => i.Type == "PRIMARY KEY");
+        if ((pk != null && pk.Cols.Count == 1 && pk.Cols[0].ToUpper() == "ID"))
         {
-          addAK += s+",";
+          tb.isIDColPK = true;
         }
-        addAK = addAK.Substring(0,addAK.Length -1) +")";
-        con.Execute(addAK, null, null, 60);
       }
 
       // collect relationship
-      var rels = new List<Relationship>();
-      Dictionary<string, Constrain> jj = new Dictionary<string, Constrain>();
-      IEnumerable<dynamic> relq = con.Query<dynamic>(qRel).ToList();
-      foreach(var r in relq)
+      IEnumerable<dynamic> relq = con.Query<dynamic>(qRel, null, tran).ToList();
+      LogLatestSqlCommand();
+
+      foreach (var r in relq)
       {
         var f = r as IDictionary<string, object>;
         var FKName = f["FKName"].ToString();
@@ -136,38 +210,78 @@ namespace ConvertDBKeyToID.DB
           rel.RefrencedTableCols.Add(ReferencedTableCol);
         }
       }
-      
+
+
       // drop relationship
       foreach (var rel in rels)
       {
-        string dropRel = string.Format("ALTER TABLE {0} DROP CONSTRAINT {1}", rel.Table, rel.FKName);
-        con.Execute(dropRel, null, null, 60);
+        string dropRel1 = string.Format("ALTER TABLE [{0}] DROP CONSTRAINT [{1}]", rel.Table, rel.FKName);
+        try
+        {
+          int result = con.Execute(dropRel1, null, tran, 60);
+          rel.NeedRebuild = true;
+          LogLatestSqlCommand();
+        }
+        catch (Exception ex)
+        {
+          Log("Failed to Drop FK ");
+          LogLatestSqlCommandFailed();
+        }
       }
 
       foreach (var tb in tbls)
       {
-        // 2. remove PK
-        string dropPK = string.Format("ALTER TABLE {0} DROP CONSTRAINT {1}", tb.Name, tb.PK_Constrains.Name);
-        con.Execute(dropPK, null, null, 60);
-
-        // 3. add ID if not exist
-        if (!tb.isIDColExist)
+        if (!tb.isIDColPK)
         {
-          string addID = string.Format("ALTER TABLE {0} ADD ID bigint IDENTITY(1,1)", tb.Name);
-          con.Execute(addID,null,null,60);
-          tb.isIDColExist = true;
+          var pk = tb.Constraints.Find(i => i.Type == "PRIMARY KEY");
+          if (pk != null)
+          {
+            // 1. Add AK
+            string addAK = string.Format("ALTER TABLE [{0}] ADD CONSTRAINT AK_{1} UNIQUE (", tb.Name, pk.Name);
+            foreach (string s in pk.Cols)
+            {
+              addAK += s + ",";
+            }
+            addAK = addAK.Substring(0, addAK.Length - 1) + ")";
+            try
+            {
+              con.Execute(addAK, null, tran, 60);
+              LogLatestSqlCommand();
+            }
+            catch (Exception ex) 
+            {
+              Log("Failed to addi AK " );
+              LogLatestSqlCommandFailed();
+            }
+
+            // Drop old Primary Key
+            string dropPK = string.Format("ALTER TABLE [{0}] DROP CONSTRAINT {1}", tb.Name, pk.Name);
+            try
+            {
+              con.Execute(dropPK, null, tran, 60);
+              LogLatestSqlCommand();
+            }
+            catch (Exception ex)
+            {
+              Log("Failed to drop FK constraint ");
+              LogLatestSqlCommandFailed();
+            }
+          }
+
+          // make ID primary Key
+          string addPK = string.Format("ALTER TABLE [{0}] ADD CONSTRAINT PK_{0} PRIMARY KEY CLUSTERED ([ID])", tb.Name);
+          try
+          {
+            con.Execute(addPK, null, tran, 60);
+            tb.isIDColPK = true;
+            LogLatestSqlCommand();
+          }
+          catch (Exception ex)
+          {
+            Log("Failed to add PK ");
+            LogLatestSqlCommandFailed();
+          }
         }
-
-        // 
-        // make ID primary key
-        //if (!tb.isIDColPK)
-        {
-          string addPK = string.Format("ALTER TABLE {0} ADD CONSTRAINT PK_{0} PRIMARY KEY CLUSTERED ([ID])", tb.Name);
-          con.Execute(addPK, null, null, 60);
-          tb.isIDColPK = true;
-        }
-
-
       }
 
       // recreate relationship
@@ -187,20 +301,22 @@ namespace ConvertDBKeyToID.DB
         }
         refCols = refCols.Substring(0, refCols.Length - 1);
 
-        string addRel = string.Format("ALTER TABLE {0} ADD CONSTRAINT {1} FOREIGN KEY ({2}) REFERENCES {3} ({4}) ",
+        string addRel = string.Format("ALTER TABLE [{0}] ADD CONSTRAINT {1} FOREIGN KEY ([{2}]) REFERENCES [{3}] ([{4}]) ",
           rel.Table, rel.FKName, tblCols, rel.RefrencedTable, refCols);
 
         try
         {
-          con.Execute(addRel, null, null, 60);
+          con.Execute(addRel, null, tran, 60);
+          LogLatestSqlCommand();
         }
         catch (Exception ex)
         {
+          Log("Failed to add FK constraint ");
+          LogLatestSqlCommandFailed();
         }
       }
 
-      return tbls;
+      return;
     }
-
   }
 }
