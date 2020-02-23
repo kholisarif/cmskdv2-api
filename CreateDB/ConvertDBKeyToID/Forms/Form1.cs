@@ -91,16 +91,18 @@ namespace ConvertDBKeyToID
           {
             con.Open();
           }
-          using (var tran = con.BeginTransaction())
+          IDbTransaction tran;
+          tran = null; //con.BeginTransaction();
+          //using ()
           {
             try
             {
               DbUtils.ConvertKeyToID(con,tran);
-              tran.Commit();
+              //tran.Commit();
             }
-            catch
+            catch (Exception ex)
             {
-              tran.Rollback();
+              //tran.Rollback();
             }
           }
         }

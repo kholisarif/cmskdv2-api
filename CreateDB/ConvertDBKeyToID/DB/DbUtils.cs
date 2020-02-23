@@ -18,43 +18,27 @@ namespace ConvertDBKeyToID.DB
     public static event logDelegate OnLog;
 
 
-    public static string conStr = "Data Source=.;Initial Catalog=V@LID49v6_cms_2020;User id = sa; password = password123!";
-    public static string qAllTables = @"SELECT upper(TABLE_NAME) as Name FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME NOT LIKE 'sys%' AND TABLE_TYPE = 'BASE TABLE'";
-    public static string qAllColumns = @"SELECT TABLE_NAME, COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME NOT LIKE 'SYS%' ORDER BY TABLE_NAME, ORDINAL_POSITION";
-    public static string qContraints = @"SELECT tc.TABLE_NAME, tc.CONSTRAINT_NAME , ccu.COLUMN_NAME, tc.CONSTRAINT_TYPE
+    public static string conStr = "Data Source=.;Initial Catalog=V@LID49_LAT;User id = sa; password = password123!";
+    public static string qAllColumns = @"SELECT sc.TABLE_SCHEMA +'.'+sc.TABLE_NAME AS TABLE_NAME, COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS sc 
+                                        INNER JOIN INFORMATION_SCHEMA.TABLES tb on tb.TABLE_SCHEMA = sc.TABLE_SCHEMA and tb.TABLE_NAME = sc.TABLE_NAME
+                                        WHERE sc.TABLE_NAME NOT LIKE 'SYS%' and tb.TABLE_TYPE = 'BASE TABLE' ORDER BY TABLE_NAME, ORDINAL_POSITION";
+    public static string qContraints = @"SELECT tc.TABLE_SCHEMA+'.'+tc.TABLE_NAME as TABLE_NAME, tc.CONSTRAINT_NAME , ccu.COLUMN_NAME, tc.CONSTRAINT_TYPE
                                           FROM
                                               INFORMATION_SCHEMA.TABLE_CONSTRAINTS AS tc
                                               JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE AS ccu ON ccu.CONSTRAINT_NAME = tc.CONSTRAINT_NAME
                                           WHERE
                                               (TC.CONSTRAINT_TYPE = 'UNIQUE' OR TC.CONSTRAINT_TYPE = 'PRIMARY KEY') AND TC.TABLE_NAME NOT LIKE 'sys%'
-                                          ORDER BY TABLE_NAME, CONSTRAINT_NAME
-                                          ";
+                                          ORDER BY TABLE_NAME, CONSTRAINT_NAME";
 
-    public static string qPK = @"SELECT TABLE_NAME, CONSTRAINT_NAME CONSTNAME, COLUMN_NAME FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
-                                WHERE OBJECTPROPERTY(OBJECT_ID(CONSTRAINT_SCHEMA + '.' + QUOTENAME(CONSTRAINT_NAME)), 'IsPrimaryKey') = 1";
-
-    public static string qCols = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS where table_name = '{0}'";
-
-    public static string qRel = @"SELECT
-                                fk.name 'FKName',
-                                tp.name 'Table',
-                                cp.name TableCol, 
-                                tr.name 'ReferencedTable',
-                                cr.name ReferencedTableCol
-                            FROM 
-                                sys.foreign_keys fk
-                            INNER JOIN 
-                                sys.tables tp ON fk.parent_object_id = tp.object_id
-                            INNER JOIN 
-                                sys.tables tr ON fk.referenced_object_id = tr.object_id
-                            INNER JOIN 
-                                sys.foreign_key_columns fkc ON fkc.constraint_object_id = fk.object_id
-                            INNER JOIN 
-                                sys.columns cp ON fkc.parent_column_id = cp.column_id AND fkc.parent_object_id = cp.object_id
-                            INNER JOIN 
-                                sys.columns cr ON fkc.referenced_column_id = cr.column_id AND fkc.referenced_object_id = cr.object_id
-                            ORDER BY
-                                tp.name, cp.column_id";
+    public static string qRel = @"SELECT fk.name 'FKName', sc.name+'.'+ tp.name as 'Table', cp.name TableCol, sc.name+'.'+tr.name as ReferencedTable, cr.name ReferencedTableCol
+                            FROM sys.foreign_keys fk
+                            INNER JOIN sys.tables tp ON fk.parent_object_id = tp.object_id
+                            INNER JOIN sys.tables tr ON fk.referenced_object_id = tr.object_id
+							              INNER JOIN sys.schemas sc on tr.schema_id = sc.schema_id
+                            INNER JOIN sys.foreign_key_columns fkc ON fkc.constraint_object_id = fk.object_id
+                            INNER JOIN sys.columns cp ON fkc.parent_column_id = cp.column_id AND fkc.parent_object_id = cp.object_id
+                            INNER JOIN sys.columns cr ON fkc.referenced_column_id = cr.column_id AND fkc.referenced_object_id = cr.object_id
+                            ORDER BY tp.name, cp.column_id";
 
 
     public static IDbConnection GetConnection()
@@ -90,7 +74,8 @@ namespace ConvertDBKeyToID.DB
       var tbls = new List<Table>();
       var rels = new List<Relationship>(); //tb.Relationships;
 
-      //
+      con.Execute("EXEC sp_changedbowner 'sa'");
+      LogLatestSqlCommand();
       con.Execute("ALTER AUTHORIZATION ON SCHEMA::SIE TO db_owner", null, tran, 60);
       LogLatestSqlCommand();
       // Rename Column ID in 'JURNAL_ROLE'
@@ -146,7 +131,10 @@ namespace ConvertDBKeyToID.DB
           constraint.Type = consType;
           tb.Constraints.Add(constraint);
         }
-        constraint.Cols.Add(colName);
+        if (!constraint.Cols.Contains(colName))
+        {
+          constraint.Cols.Add(colName);
+        }
       }
 
 
@@ -158,7 +146,7 @@ namespace ConvertDBKeyToID.DB
         {
           try
           {
-            con.Execute(string.Format("ALTER TABLE [{0}] ADD [ID] bigint IDENTITY(1,1)", tb.Name), null, tran);
+            con.Execute(string.Format("ALTER TABLE {0} ADD [ID] bigint IDENTITY(1,1)", Qualify(tb.Name)), null, tran);
             LogLatestSqlCommand();
             tb.Cols.Add("ID");
             tb.isIDColExist = true;
@@ -215,7 +203,7 @@ namespace ConvertDBKeyToID.DB
       // drop relationship
       foreach (var rel in rels)
       {
-        string dropRel1 = string.Format("ALTER TABLE [{0}] DROP CONSTRAINT [{1}]", rel.Table, rel.FKName);
+        string dropRel1 = string.Format("ALTER TABLE {0} DROP CONSTRAINT {1}", Qualify(rel.Table), rel.FKName);
         try
         {
           int result = con.Execute(dropRel1, null, tran, 60);
@@ -237,7 +225,7 @@ namespace ConvertDBKeyToID.DB
           if (pk != null)
           {
             // 1. Add AK
-            string addAK = string.Format("ALTER TABLE [{0}] ADD CONSTRAINT AK_{1} UNIQUE (", tb.Name, pk.Name);
+            string addAK = string.Format("ALTER TABLE {0} ADD CONSTRAINT AK_{1} UNIQUE (", Qualify(tb.Name), pk.Name);
             foreach (string s in pk.Cols)
             {
               addAK += s + ",";
@@ -255,7 +243,7 @@ namespace ConvertDBKeyToID.DB
             }
 
             // Drop old Primary Key
-            string dropPK = string.Format("ALTER TABLE [{0}] DROP CONSTRAINT {1}", tb.Name, pk.Name);
+            string dropPK = string.Format("ALTER TABLE {0} DROP CONSTRAINT {1}", Qualify(tb.Name), pk.Name);
             try
             {
               con.Execute(dropPK, null, tran, 60);
@@ -269,7 +257,7 @@ namespace ConvertDBKeyToID.DB
           }
 
           // make ID primary Key
-          string addPK = string.Format("ALTER TABLE [{0}] ADD CONSTRAINT PK_{0} PRIMARY KEY CLUSTERED ([ID])", tb.Name);
+          string addPK = string.Format("ALTER TABLE {0} ADD CONSTRAINT PK_{1} PRIMARY KEY CLUSTERED ([ID])", Qualify(tb.Name), tb.Name.Replace(".", ""));
           try
           {
             con.Execute(addPK, null, tran, 60);
@@ -301,8 +289,8 @@ namespace ConvertDBKeyToID.DB
         }
         refCols = refCols.Substring(0, refCols.Length - 1);
 
-        string addRel = string.Format("ALTER TABLE [{0}] ADD CONSTRAINT {1} FOREIGN KEY ([{2}]) REFERENCES [{3}] ([{4}]) ",
-          rel.Table, rel.FKName, tblCols, rel.RefrencedTable, refCols);
+        string addRel = string.Format("ALTER TABLE {0} ADD CONSTRAINT {1} FOREIGN KEY ([{2}]) REFERENCES {3} ([{4}]) ",
+          Qualify(rel.Table), rel.FKName.Replace(".", ""), tblCols, Qualify(rel.RefrencedTable), refCols);
 
         try
         {
@@ -317,6 +305,11 @@ namespace ConvertDBKeyToID.DB
       }
 
       return;
+    }
+
+    private static string Qualify(string p)
+    {
+      return "["+p.Replace(".","].[")+"]";
     }
   }
 }
