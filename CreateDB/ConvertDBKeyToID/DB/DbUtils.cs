@@ -74,7 +74,7 @@ namespace ConvertDBKeyToID.DB
       var tbls = new List<Table>();
       var rels = new List<Relationship>(); //tb.Relationships;
 
-      con.Execute("EXEC sp_changedbowner 'sa'");
+      con.Execute("EXEC sp_changedbowner 'sa'", null, tran, 60);
       LogLatestSqlCommand();
       con.Execute("ALTER AUTHORIZATION ON SCHEMA::SIE TO db_owner", null, tran, 60);
       LogLatestSqlCommand();

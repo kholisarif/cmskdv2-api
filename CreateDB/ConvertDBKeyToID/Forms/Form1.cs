@@ -90,19 +90,18 @@ namespace ConvertDBKeyToID
           if (con.State == ConnectionState.Closed)
           {
             con.Open();
-          }
-          IDbTransaction tran;
-          tran = null; //con.BeginTransaction();
-          //using ()
+          }           
+
+           using (IDbTransaction tran = con.BeginTransaction())
           {
             try
             {
               DbUtils.ConvertKeyToID(con,tran);
-              //tran.Commit();
+              tran.Commit();
             }
             catch (Exception ex)
             {
-              //tran.Rollback();
+              tran.Rollback();
             }
           }
         }
