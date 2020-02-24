@@ -13,6 +13,10 @@ namespace ICMSTU.API.Commands.BPKDETR
     public string UnitKey { get; set; }
     public string NoBPK { get; set; }
     public Decimal? Nilai { get; set; }
+    public int IdMatangR { get; set; }
+    public int IdMKegiatan { get; set; }
+    public int IdDaftUnit { get; set; }
+    public int IdBPK { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
   }
@@ -26,6 +30,10 @@ namespace ICMSTU.API.Commands.BPKDETR
     public string NoBPK { get; set; }
     public Decimal? Nilai { get; set; }
     public int Id { get; set; }
+    public int IdMatangR { get; set; }
+    public int IdMKegiatan { get; set; }
+    public int IdDaftUnit { get; set; }
+    public int IdBPK { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
   }

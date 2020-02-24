@@ -8,7 +8,6 @@ namespace ICMSTU.API.Models.Entities
   [Table("MKEGIATAN")]
   public class MKegiatan
   {
-    [Key]
     public string KdKegUnit { get; set; }
     public string IdPrgrm { get; set; }
     public string KdPerspektif { get; set; }
@@ -17,6 +16,7 @@ namespace ICMSTU.API.Models.Entities
     public string LevelKeg { get; set; }
     public string Type { get; set; }
     public string KdKeg_Induk { get; set; }
+    [Key]
     public int Id { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }

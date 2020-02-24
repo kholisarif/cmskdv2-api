@@ -22,6 +22,15 @@ namespace ICMSTU.API.Commands.BPK
     public string NoBA { get; set; }
     public string KdBank { get; set; }
     public string NoRek { get; set; }
+    public int IdDAFTUNIT { get; set; }
+    public int IdSTATTRS { get; set; }
+    public int IdBEND { get; set; }
+    public int IdBerita { get; set; }
+    public int IdJTRANSFER { get; set; }
+    public int IdJBAYAR { get; set; }
+    public int IdDAFTPHK3 { get; set; }
+    public int IdJKIRIM { get; set; }
+    public int IdJCAIR { get; set; }
     public int? KdTransfer { get; set; }
     public int? KdBayar { get; set; }
     public string KDP3 { get; set; }
@@ -40,6 +49,7 @@ namespace ICMSTU.API.Commands.BPK
 
   public class BPKUpdate : IRequest<Models.Entities.BPK>
   {
+    
     public string UnitKey { get; set; }
     public string NoBPK { get; set; }
     public string KdStatus { get; set; }
@@ -56,6 +66,15 @@ namespace ICMSTU.API.Commands.BPK
     public string KdBank { get; set; }
     public string NoRek { get; set; }
     public int Id { get; set; }
+    public int IdDAFTUNIT { get; set; }
+    public int IdSTATTRS { get; set; }
+    public int IdBEND { get; set; }
+    public int IdBerita { get; set; }
+    public int IdJTRANSFER { get; set; }
+    public int IdJBAYAR { get; set; }
+    public int IdDAFTPHK3 { get; set; }
+    public int IdJKIRIM { get; set; }
+    public int IdJCAIR { get; set; }
     public int? KdTransfer { get; set; }
     public int? KdBayar { get; set; }
     public string KDP3 { get; set; }

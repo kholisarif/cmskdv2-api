@@ -8,13 +8,13 @@ namespace ICMSTU.API.Models.Entities
   [Table("MATANGR")]
   public class MATANGR
   {
-    [Key]
     public string MtgKey { get; set; }
     public string kdPer { get; set; }
     public string nmPer { get; set; }
     public string mtgLevel { get; set; }
     public string kdKhusus { get; set; }
     public string type { get; set; }
+    [Key]
     public int Id { get; set; }
     public int jnsRek { get; set; }
     public int stAktif { get; set; }

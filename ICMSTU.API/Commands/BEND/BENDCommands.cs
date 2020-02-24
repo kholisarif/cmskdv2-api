@@ -18,6 +18,8 @@ namespace ICMSTU.API.Commands.BEND
     public string NPWPBend { get; set; }
     public DateTime? TglStopBend { get; set; }
     public decimal? SaldoBendT { get; set; }
+    public int IdDAFTUNIT { get; set; }
+    public int IdPegawai { get; set; }
     public int StAktif { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
@@ -37,6 +39,8 @@ namespace ICMSTU.API.Commands.BEND
     public DateTime? TglStopBend { get; set; }
     public decimal? SaldoBendT { get; set; }
     public int Id { get; set; }
+    public int IdDAFTUNIT { get; set; }
+    public int IdPegawai { get; set; }
     public int StAktif { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }

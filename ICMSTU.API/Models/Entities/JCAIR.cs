@@ -7,9 +7,9 @@ namespace ICMSTU.API.Models.Entities
   [Table("JCAIR")]
   public class JCAIR
   {
-    [Key]
     public int StCair { get; set; }
     public string UraiCair { get; set; }
+    [Key]
     public int Id { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
