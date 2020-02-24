@@ -12,8 +12,9 @@ namespace ICMSTU.API.Models.Entities
     public string UnitKey { get; set; }
     public string KdKegUnit { get; set; }
     // public List<MKegiatan> MKegiatans { get; set; }
-    [Key]
     public string IdPrgrm { get; set; }
+    public int? IdMPGRM { get; set; }
+    [ForeignKey("IdMPGRM")]
     public MPGRM MPGRM { get; set; }
     public int NoPrior { get; set; }
     public string KdSifat { get; set; }
@@ -23,7 +24,11 @@ namespace ICMSTU.API.Models.Entities
     [Column(TypeName="Date")]
     public DateTime? TglAwal { get; set; }
     public Decimal? TargetP { get; set; }
+    [Key]
     public int Id { get; set; }
+    public int? IdDAFTUNIT { get; set; }
+    [ForeignKey("IdDAFTUNIT")]
+    public DAFTUNIT DAFTUNIT { get; set; }
     public string Lokasi { get; set; }
     public Decimal? JumlahMin1 { get; set; }
     public Decimal? Pagu { get; set; }
