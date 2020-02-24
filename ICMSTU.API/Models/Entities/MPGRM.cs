@@ -15,9 +15,9 @@ namespace ICMSTU.API.Models.Entities
     public string NuPrgrm { get; set; }
     [Key]
     public int Id { get; set; }
-    public int? IdDAFTUNIT { get; set; }
-    [ForeignKey("IdDAFTUNIT")]
-    public DAFTUNIT DAFTUNIT { get; set; }
+    // public int? IdDAFTUNIT { get; set; }
+    // [ForeignKey("IdDAFTUNIT")]
+    // public DAFTUNIT DAFTUNIT { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
     // public KEGUNIT KEGUNIT { get; set; }

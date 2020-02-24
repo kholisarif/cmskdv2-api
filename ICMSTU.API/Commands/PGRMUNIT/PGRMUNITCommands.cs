@@ -14,6 +14,7 @@ namespace ICMSTU.API.Commands.PGRMUNIT
     //public MProgram Program { get; set; }
     //public int UnitOrganisasiId { get; set; }
     //public UnitOrganisasi UnitOrganisasi { get; set; }
+    public int? IdMPGRM { get; set; }
     public string Target { get; set; }
     public string Sasaran { get; set; }
     public int? NoPrio { get; set; }
@@ -33,6 +34,7 @@ namespace ICMSTU.API.Commands.PGRMUNIT
     //public MProgram Program { get; set; }
     //public int UnitOrganisasiId { get; set; }
     //public UnitOrganisasi UnitOrganisasi { get; set; }
+    public int? IdMPGRM { get; set; }
     public string Target { get; set; }
     public string Sasaran { get; set; }
     public int? NoPrio { get; set; }

@@ -29,6 +29,9 @@ namespace ICMSTU.API.Models.Entities
     public int? IdDAFTUNIT { get; set; }
     [ForeignKey("IdDAFTUNIT")]
     public DAFTUNIT DAFTUNIT { get; set; }
+    public int? IdPgrmUnit { get; set; }
+    [ForeignKey("IdPgrmUnit")]
+    public PGRMUNIT PGRMUNIT { get; set; }
     public string Lokasi { get; set; }
     public Decimal? JumlahMin1 { get; set; }
     public Decimal? Pagu { get; set; }

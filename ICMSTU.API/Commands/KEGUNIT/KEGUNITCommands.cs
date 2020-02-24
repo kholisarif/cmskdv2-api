@@ -19,6 +19,7 @@ namespace ICMSTU.API.Commands.KEGUNIT
     public DateTime? TglAwal { get; set; }
     public Decimal? TargetP { get; set; }
     public int? IdDAFTUNIT { get; set; }
+    public int? IdPgrmUnit { get; set; }
     public string Lokasi { get; set; }
     public Decimal? JumlahMin1 { get; set; }
     public Decimal? Pagu { get; set; }
@@ -44,6 +45,7 @@ namespace ICMSTU.API.Commands.KEGUNIT
     public Decimal? TargetP { get; set; }
     public int Id { get; set; }
     public int? IdDAFTUNIT { get; set; }
+    public int? IdPgrmUnit { get; set; }
     public string Lokasi { get; set; }
     public Decimal? JumlahMin1 { get; set; }
     public Decimal? Pagu { get; set; }
