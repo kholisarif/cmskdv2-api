@@ -17,6 +17,7 @@ namespace ICMSTU.API.Commands.PGRMUNIT
     public string Target { get; set; }
     public string Sasaran { get; set; }
     public int? NoPrio { get; set; }
+    public int? IdDAFTUNIT { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
   }
@@ -24,6 +25,7 @@ namespace ICMSTU.API.Commands.PGRMUNIT
   public class PGRMUNITUpdate : IRequest<Models.Entities.PGRMUNIT>
   {
     public int Id { get; set; }
+    public int? IdDAFTUNIT { get; set; }
     public string kdtahap { get; set; }
     //public Tahapan Tahapan { get; set; }
     public string UnitKey { get; set; }
