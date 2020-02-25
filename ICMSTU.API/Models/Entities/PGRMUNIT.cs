@@ -10,9 +10,9 @@ namespace ICMSTU.API.Models.Entities
   {
     [Key]
     public int Id { get; set; }
-    public int? IdDAFTUNIT { get; set; }
-    [ForeignKey("IdDAFTUNIT")]
-    public DAFTUNIT DAFTUNIT { get; set; }
+    // public int? IdDAFTUNIT { get; set; }
+    // [ForeignKey("IdDAFTUNIT")]
+    // public DAFTUNIT DAFTUNIT { get; set; }
     public string kdtahap { get; set; }
     public string UnitKey { get; set; }
     public string IdPrgrm { get; set; }

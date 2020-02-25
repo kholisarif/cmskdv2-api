@@ -22,6 +22,6 @@ namespace ICMSTU.API.Models.Entities
     public DateTime? DateUpdate { get; set; }
     // public KEGUNIT KEGUNIT { get; set; }
     public List<PGRMUNIT> PGRMUNITs { get; set; }
-    public List<KEGUNIT> KEGUNITs { get; set; }
+    // public List<KEGUNIT> KEGUNITs { get; set; }
   }
 }

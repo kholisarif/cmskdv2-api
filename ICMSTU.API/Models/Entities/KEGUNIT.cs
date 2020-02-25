@@ -15,9 +15,9 @@ namespace ICMSTU.API.Models.Entities
     [ForeignKey("IdMKegiatan")]
     public MKegiatan MKegiatan { get; set; }
     public string IdPrgrm { get; set; }
-    public int? IdMPGRM { get; set; }
-    [ForeignKey("IdMPGRM")]
-    public MPGRM MPGRM { get; set; }
+    // public int? IdMPGRM { get; set; }
+    // [ForeignKey("IdMPGRM")]
+    // public MPGRM MPGRM { get; set; }
     public int NoPrior { get; set; }
     public string KdSifat { get; set; }
     public string NIP { get; set; }
@@ -28,9 +28,9 @@ namespace ICMSTU.API.Models.Entities
     public Decimal? TargetP { get; set; }
     [Key]
     public int Id { get; set; }
-    public int? IdDAFTUNIT { get; set; }
-    [ForeignKey("IdDAFTUNIT")]
-    public DAFTUNIT DAFTUNIT { get; set; }
+    // public int? IdDAFTUNIT { get; set; }
+    // [ForeignKey("IdDAFTUNIT")]
+    // public DAFTUNIT DAFTUNIT { get; set; }
     public int? IdPgrmUnit { get; set; }
     [ForeignKey("IdPgrmUnit")]
     public PGRMUNIT PGRMUNIT { get; set; }
