@@ -20,7 +20,7 @@ namespace ICMSTU.API.Models.Entities
     public int Id { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
-    public MPGRM MPGRM { get; set; }
+    // public MPGRM MPGRM { get; set; }
     public List<BPKDETR> BPKDETRs { get; set; }
   }
 }

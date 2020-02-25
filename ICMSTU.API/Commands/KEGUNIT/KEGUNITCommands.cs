@@ -10,6 +10,7 @@ namespace ICMSTU.API.Commands.KEGUNIT
     public string KdTahap { get; set; }
     public string UnitKey { get; set; }
     public string KdKegUnit { get; set; }
+    public int? IdMKegiatan { get; set; }
     public string IdPrgrm { get; set; }
     public int? IdMPGRM { get; set; }
     public int? NoPrior { get; set; }
@@ -35,6 +36,7 @@ namespace ICMSTU.API.Commands.KEGUNIT
     public string KdTahap { get; set; }
     public string UnitKey { get; set; }
     public string KdKegUnit { get; set; }
+    public int? IdMKegiatan { get; set; }
     public string IdPrgrm { get; set; }
     public int? IdMPGRM { get; set; }
     public int? NoPrior { get; set; }

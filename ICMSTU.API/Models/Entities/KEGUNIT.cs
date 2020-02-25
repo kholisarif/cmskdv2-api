@@ -11,7 +11,9 @@ namespace ICMSTU.API.Models.Entities
     public string KdTahap { get; set; }
     public string UnitKey { get; set; }
     public string KdKegUnit { get; set; }
-    // public List<MKegiatan> MKegiatans { get; set; }
+    public int? IdMKegiatan { get; set; }
+    [ForeignKey("IdMKegiatan")]
+    public MKegiatan MKegiatan { get; set; }
     public string IdPrgrm { get; set; }
     public int? IdMPGRM { get; set; }
     [ForeignKey("IdMPGRM")]

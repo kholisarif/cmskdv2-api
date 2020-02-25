@@ -9,7 +9,7 @@ namespace ICMSTU.API.Models.Entities
   public class MPGRM
   {
     public string IdPrgrm { get; set; }
-    public List<MKegiatan> MKegiatans { get; set; }
+    // public List<MKegiatan> MKegiatans { get; set; }
     public string UnitKey { get; set; }
     public string NmPrgrm { get; set; }
     public string NuPrgrm { get; set; }
@@ -22,5 +22,6 @@ namespace ICMSTU.API.Models.Entities
     public DateTime? DateUpdate { get; set; }
     // public KEGUNIT KEGUNIT { get; set; }
     public List<PGRMUNIT> PGRMUNITs { get; set; }
+    public List<KEGUNIT> KEGUNITs { get; set; }
   }
 }
