@@ -197,7 +197,7 @@ namespace ICMSTU.API
 
       app.UseSwaggerUI(c =>
       {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "ICMSKD API v1.0");
+        c.SwaggerEndpoint("v1/swagger.json", "ICMSKD API v1.0");
 
       });
 
