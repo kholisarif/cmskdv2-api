@@ -310,10 +310,10 @@ namespace ICMSTU.API.Infrastructures
         e.HasIndex(s => new { s.UnitOrganisasiId, s.JnsTransaksiId, s.KegiatanUnitId, s.NoPengajuan, s.NoRegister });
       });
 
-      builder.Entity<BPK>(e =>
-      {
-        e.HasKey(o => new { o.UnitKey, o.NoBPK });
-      });
+      // builder.Entity<BPK>(e =>
+      // {
+      //   e.HasKey(o => new { o.UnitKey, o.NoBPK });
+      // });
     }
   }
 }

@@ -8,12 +8,14 @@ namespace ICMSTU.API.Models.Entities
   [Table("PEGAWAI")]
   public class Pegawai
   {
-    public int Id { get; set; }
     [Key]
+    public int Id { get; set; }
+    public int? IdDAFTUNIT { get; set; }
+    [ForeignKey("IdDAFTUNIT")]
+    public DAFTUNIT DAFTUNIT { get; set; }
     public string NIP { get; set; }
     public string KdGol { get; set; }
     public string UnitKey { get; set; }
-    public DAFTUNIT DAFTUNIT { get; set; }
     public string Nama { get; set; }
     //public int GolonganId { get; set; }
     //public Golongan Golongan { get; set; }
@@ -25,6 +27,6 @@ namespace ICMSTU.API.Models.Entities
     public string NPWP { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
-     public List<BEND> BENDs { get; set; }
+    public List<BEND> BENDs { get; set; }
   }
 }

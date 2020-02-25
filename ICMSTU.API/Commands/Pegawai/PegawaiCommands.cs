@@ -19,6 +19,7 @@ namespace ICMSTU.API.Commands.Pegawai
     public string Jabatan { get; set; }
     public string PDDK { get; set; }
     public string NPWP { get; set; }
+    public int? IdDAFTUNIT { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
   }
@@ -38,6 +39,7 @@ namespace ICMSTU.API.Commands.Pegawai
     public string Jabatan { get; set; }
     public string PDDK { get; set; }
     public string NPWP { get; set; }
+    public int? IdDAFTUNIT { get; set; }    
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
   }
