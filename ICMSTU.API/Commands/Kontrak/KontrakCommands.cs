@@ -10,12 +10,14 @@ namespace ICMSTU.API.Commands.Kontrak
     public string UnitKey { get; set; }
     public string NoKon { get; set; }
     public string Kdp3 { get; set; }
-    public int IdDAFTPHK3 { get; set; }
     public string KdKegUnit { get; set; }
     public DateTime? TglKon { get; set; }
     public DateTime? TglSlsKonk { get; set; }
     public string Uraian { get; set; }
     public Decimal? Nilai { get; set; }
+    public int IdDAFTPHK3 { get; set; }
+    public int IdDAFTUNIT { get; set; }
+    public int IdMKegiatan { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
     public string NoKontrak { get; set; }
@@ -34,6 +36,9 @@ namespace ICMSTU.API.Commands.Kontrak
     public string Uraian { get; set; }
     public Decimal? Nilai { get; set; }
     public int Id { get; set; }
+    public int IdDAFTPHK3 { get; set; }
+    public int IdDAFTUNIT { get; set; }
+    public int IdMKegiatan { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
     public string NoKontrak { get; set; }

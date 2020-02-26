@@ -26,6 +26,9 @@ namespace ICMSTU.API.Models.Entities
     public int IdDAFTUNIT { get; set; }
     [ForeignKey("IdDAFTUNIT")]
     public DAFTUNIT DAFTUNIT { get; set; }
+    public int IdMKegiatan { get; set; }
+    [ForeignKey("IdMKegiatan")]
+    public MKegiatan MKegiatan { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
     public string NoKontrak { get; set; }
