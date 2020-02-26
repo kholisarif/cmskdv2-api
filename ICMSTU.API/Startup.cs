@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -178,6 +179,11 @@ namespace ICMSTU.API
 
       //app.UseHttpsRedirection();
 
+      app.UseForwardedHeaders(new ForwardedHeadersOptions
+      {
+        ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+      });
+
       app.UseAuthentication();
 
       app.UseMvc(builder =>
@@ -191,9 +197,14 @@ namespace ICMSTU.API
 
       app.UseSwaggerUI(c =>
       {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "ICMSKD API v1.0");
+        c.SwaggerEndpoint("v1/swagger.json", "ICMSKD API v1.0");
 
       });
+
+      if (!string.IsNullOrEmpty(Configuration["PathBase"]))
+      {
+        app.UsePathBase(Configuration["PathBase"]);
+      }
     }
   }
 }
