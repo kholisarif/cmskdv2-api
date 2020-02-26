@@ -13,6 +13,7 @@ namespace ICMSTU.API.Commands.BPKDETRDANA
     public string NoBPK { get; set; }
     public string KdDana { get; set; }
     public Decimal? Nilai { get; set; }
+    public int IdJDANA { get; set; }
     public string NoJetra { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
@@ -27,6 +28,7 @@ namespace ICMSTU.API.Commands.BPKDETRDANA
     public string KdDana { get; set; }
     public Decimal? Nilai { get; set; }
     public int Id { get; set; }
+    public int IdJDANA { get; set; }
     public string NoJetra { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
