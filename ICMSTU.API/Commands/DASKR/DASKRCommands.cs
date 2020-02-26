@@ -12,6 +12,7 @@ namespace ICMSTU.API.Commands.DASKR
     public string UnitKey { get; set; }
     public string IdxDask { get; set; }
     public Decimal? Nilai { get; set; }
+    public int IdMatangR { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
   }
@@ -24,6 +25,7 @@ namespace ICMSTU.API.Commands.DASKR
     public string IdxDask { get; set; }
     public Decimal? Nilai { get; set; }
     public int Id { get; set; }
+    public int IdMatangR { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
   }
