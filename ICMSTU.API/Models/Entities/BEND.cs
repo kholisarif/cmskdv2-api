@@ -22,10 +22,10 @@ namespace ICMSTU.API.Models.Entities
     public decimal? SaldoBendT { get; set; }
     [Key]
     public int Id { get; set; }
-    public int IdDAFTUNIT { get; set; }
+    public int? IdDAFTUNIT { get; set; }
     [ForeignKey("IdDAFTUNIT")]
     public DAFTUNIT DAFTUNIT { get; set; }
-    public int IdPegawai { get; set; }
+    public int? IdPegawai { get; set; }
     [ForeignKey("IdPegawai")]
     public Pegawai Pegawai { get; set; }
     public int StAktif { get; set; }
