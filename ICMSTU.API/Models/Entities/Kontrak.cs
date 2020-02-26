@@ -11,9 +11,6 @@ namespace ICMSTU.API.Models.Entities
     public string UnitKey { get; set; }
     public string NoKon { get; set; }
     public string KdP3 { get; set; }
-    public int IdDAFTPHK3 { get; set; }
-    [ForeignKey("IdDAFTPHK3")]
-    public DAFTPHK DAFTPHK { get; set; }
     public string KdKegUnit { get; set; }
     [Column(TypeName="Date")]
     public DateTime? TglKon { get; set; }
@@ -23,6 +20,12 @@ namespace ICMSTU.API.Models.Entities
     public Decimal? Nilai { get; set; }
     [Key]
     public int Id { get; set; }
+    public int IdDAFTPHK3 { get; set; }
+    [ForeignKey("IdDAFTPHK3")]
+    public DAFTPHK DAFTPHK { get; set; }
+    public int IdDAFTUNIT { get; set; }
+    [ForeignKey("IdDAFTUNIT")]
+    public DAFTUNIT DAFTUNIT { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
     public string NoKontrak { get; set; }

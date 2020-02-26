@@ -10,7 +10,8 @@ namespace ICMSTU.API.Models.Entities
     public string Username { get; set; }
     public int? UnitOrganisasiId { get; set; }
     public UnitOrganisasi UnitOrganisasi { get; set; }
-    public string NIP { get; set; }
+    public int IdPegawai { get; set; }
+    [ForeignKey("IdPegawai")]
     public Pegawai Pegawai { get; set; }
     public string Password { get; set; }
     public byte FalseLoginCount { get; set; }
