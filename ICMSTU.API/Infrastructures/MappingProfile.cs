@@ -26,6 +26,11 @@ using ICMSTU.API.Commands.BERITADETR;
 using ICMSTU.API.Commands.SP2D;
 using ICMSTU.API.Commands.DASKR;
 using ICMSTU.API.Commands.Kontrak;
+using ICMSTU.API.Commands.SBDANAR;
+using ICMSTU.API.Commands.NPD;
+using ICMSTU.API.Commands.NPDBPK;
+using ICMSTU.API.Commands.NPDSTS;
+using ICMSTU.API.Commands.NPDTBPL;
 using ICMSTU.API.Commands.STATTRS;
 using ICMSTU.API.Commands.JCAIR;
 using ICMSTU.API.Commands.JKIRIM;
@@ -126,6 +131,21 @@ namespace ICMSTU.API.Infrastructures
 
       CreateMap<KontrakCreate, Kontrak>();
       CreateMap<KontrakUpdate, Kontrak>();
+
+      CreateMap<SBDANARCreate, SBDANAR>();
+      CreateMap<SBDANARUpdate, SBDANAR>();
+
+      CreateMap<NPDCreate, NPD>();
+      CreateMap<NPDUpdate, NPD>();
+
+      CreateMap<NPDBPKCreate, NPDBPK>();
+      CreateMap<NPDBPKUpdate, NPDBPK>();
+
+      CreateMap<NPDSTSCreate, NPDSTS>();
+      CreateMap<NPDSTSUpdate, NPDSTS>();
+
+      CreateMap<NPDTBPLCreate, NPDTBPL>();
+      CreateMap<NPDTBPLUpdate, NPDTBPL>();
 
       CreateMap<STATTRSCreate, STATTRS>();
       CreateMap<STATTRSUpdate, STATTRS>();

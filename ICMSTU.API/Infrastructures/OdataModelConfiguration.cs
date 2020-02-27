@@ -44,6 +44,11 @@ namespace ICMSTU.API.Infrastructures
       builder.EntitySet<SP2D>(nameof(SP2D));
       builder.EntitySet<DASKR>(nameof(DASKR));
       builder.EntitySet<Kontrak>(nameof(Kontrak));
+      builder.EntitySet<SBDANAR>(nameof(SBDANAR));
+      builder.EntitySet<NPD>(nameof(NPD));
+      builder.EntitySet<NPDBPK>(nameof(NPDBPK));
+      builder.EntitySet<NPDSTS>(nameof(NPDSTS));
+      builder.EntitySet<NPDTBPL>(nameof(NPDTBPL));
       builder.EntitySet<STATTRS>(nameof(STATTRS));
       builder.EntitySet<JCAIR>(nameof(JCAIR));
       builder.EntitySet<JKIRIM>(nameof(JKIRIM));

@@ -56,6 +56,11 @@ namespace ICMSTU.API.Infrastructures
     public DbSet<SP2D> SP2D { get; set; }
     public DbSet<DASKR> DASKR { get; set; }
     public DbSet<Kontrak> Kontrak { get; set; }
+    public DbSet<SBDANAR> SBDANAR { get; set; }
+    public DbSet<NPD> NPD { get; set; }
+    public DbSet<NPDBPK> NPDBPK { get; set; }
+    public DbSet<NPDSTS> NPDSTS { get; set; }
+    public DbSet<NPDTBPL> NPDTBPL { get; set; }
     public DbSet<STATTRS> STATTRS { get; set; }
     public DbSet<JCAIR> JCAIR { get; set; }
     public DbSet<JKIRIM> JKIRIM { get; set; }
@@ -284,6 +289,11 @@ namespace ICMSTU.API.Infrastructures
       });
 
       builder.Entity<Kontrak>(e =>
+      {
+        e.Property(b => b.Nilai).HasColumnType("decimal(18, 2)");
+      });
+
+      builder.Entity<SBDANAR>(e =>
       {
         e.Property(b => b.Nilai).HasColumnType("decimal(18, 2)");
       });
