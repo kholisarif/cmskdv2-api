@@ -14,7 +14,7 @@ namespace ICMSTU.API.Models.Entities
     public Decimal? Nilai { get; set; }
     [Key]
     public int Id { get; set; }
-    public int IdMatangR { get; set; }
+    public int? IdMatangR { get; set; }
     [ForeignKey("IdMatangR")]
     public MATANGR MATANGR { get; set; }
     public DateTime? DateCreate { get; set; }
