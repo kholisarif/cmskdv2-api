@@ -29,13 +29,11 @@ namespace ICMSTU.API.Models.Entities
     public int IdSTATTRS { get; set; }
     [ForeignKey("IdSTATTRS")]
     public STATTRS STATTRS { get; set; }
-    public int IdBeritaDETR { get; set; }
-    [ForeignKey("IdBeritaDETR")]
-    public BERITADETR BERITADETR { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
     public string NoKontrak { get; set; }
     public string NoBerita{ get; set; }
-     public List<BPK> BPKs { get; set; }
+    public List<BPK> BPKs { get; set; }
+    public List<BERITADETR> BERITADETRs { get; set; }
   }
 }

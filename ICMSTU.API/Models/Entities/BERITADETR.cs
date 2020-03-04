@@ -16,6 +16,9 @@ namespace ICMSTU.API.Models.Entities
     public int IdMATANGR { get; set; }
     [ForeignKey("IdMATANGR")]
     public MATANGR MATANGR { get; set; }
+    public int IdBerita { get; set; }
+    [ForeignKey("IdBerita")]
+    public Berita Berita { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
   }
