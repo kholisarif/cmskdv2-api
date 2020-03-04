@@ -18,8 +18,7 @@ namespace ICMSTU.API.Controllers.OdataControllers
     [HttpGet]
     [ODataRoute("DASKRKEGUNIT({unitKey}, {kdTahap})")]
     public IActionResult DASKRKEGUNIT(string unitKey,string kdTahap) {
-        // return Ok(_ctx.DASKRKEGUNIT.AsNoTracking().FromSql("EXEC [dbo].[DASKRKEGUNIT] {0}, {1}", unitKey, kdTahap)
-        return Ok(_ctx.DASKRKEGUNIT.AsNoTracking().FromSql("EXEC [dbo].[DASKRKEGUNIT] @p0, @p1", parameters: new[] { "4_", "1" })
+        return Ok(_ctx.DASKRKEGUNIT.AsNoTracking().FromSql("EXEC [dbo].[GETDASKRKEGUNIT] {0}, {1}", unitKey, kdTahap)
         );
     }
   }
