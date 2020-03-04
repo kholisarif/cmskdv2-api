@@ -65,6 +65,7 @@ namespace ICMSTU.API.Infrastructures
     public DbSet<JCAIR> JCAIR { get; set; }
     public DbSet<JKIRIM> JKIRIM { get; set; }
     public DbSet<JTRNLKAS> JTRNLKAS { get; set; }
+    public DbSet<DASKRKEGUNIT> DASKRKEGUNIT { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -320,10 +321,21 @@ namespace ICMSTU.API.Infrastructures
         e.HasIndex(s => new { s.UnitOrganisasiId, s.JnsTransaksiId, s.KegiatanUnitId, s.NoPengajuan, s.NoRegister });
       });
 
+      
+      builder.Entity<DASKRKEGUNIT>(e =>
+      {
+            e.HasKey(t => new { t.UnitKey, t.KdTahap });
+            e.Property(b => b.Nilai).HasColumnType("decimal(18, 2)");
+            e.Property(b => b.JumlahMin1).HasColumnType("decimal(18, 2)");
+            e.Property(b => b.JumlahPls1).HasColumnType("decimal(18, 2)");
+            e.Property(b => b.Pagu).HasColumnType("decimal(18, 2)");
+            e.Property(b => b.TargetP).HasColumnType("decimal(18, 2)");
+
       // builder.Entity<BPK>(e =>
       // {
       //   e.HasKey(o => new { o.UnitKey, o.NoBPK });
       // });
+      });
     }
   }
 }

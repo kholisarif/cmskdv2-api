@@ -53,6 +53,11 @@ namespace ICMSTU.API.Infrastructures
       builder.EntitySet<JCAIR>(nameof(JCAIR));
       builder.EntitySet<JKIRIM>(nameof(JKIRIM));
       builder.EntitySet<JTRNLKAS>(nameof(JTRNLKAS));
+      builder.EntitySet<DASKRKEGUNIT>(nameof(DASKRKEGUNIT));
+      var dASKRKEGUNIT = builder.Function("DASKRKEGUNIT");
+      dASKRKEGUNIT.Parameter<string>("unitKey");
+      dASKRKEGUNIT.Parameter<string>("kdTahap");
+      dASKRKEGUNIT.ReturnsCollectionFromEntitySet<DASKRKEGUNIT>(nameof(DASKRKEGUNIT));
     }
   }
 }
