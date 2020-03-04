@@ -12,6 +12,7 @@ namespace ICMSTU.API.Commands.BERITADETR
     public string MtgKey { get; set; }
     public Decimal? Nilai { get; set; }
     public int IdMATANGR { get; set; }
+    public int IdBerita { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
   }
@@ -24,6 +25,7 @@ namespace ICMSTU.API.Commands.BERITADETR
     public Decimal? Nilai { get; set; }
     public int Id { get; set; }
     public int IdMATANGR { get; set; }
+    public int IdBerita { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
   }

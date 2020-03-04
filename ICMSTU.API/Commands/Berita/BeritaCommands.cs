@@ -18,7 +18,6 @@ namespace ICMSTU.API.Commands.Berita
     public int IdDAFTUNIT { get; set; }
     public int IdKontrak { get; set; }
     public int IdSTATTRS { get; set; }
-    public int IdBeritaDETR { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
     public string NoKontrak { get; set; }
@@ -39,7 +38,6 @@ namespace ICMSTU.API.Commands.Berita
     public int IdDAFTUNIT { get; set; }
     public int IdKontrak { get; set; }
     public int IdSTATTRS { get; set; }
-    public int IdBeritaDETR { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
     public string NoKontrak { get; set; }
