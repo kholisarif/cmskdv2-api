@@ -291,7 +291,7 @@ namespace ICMSTU.API.Infrastructures
 
       builder.Entity<Kontrak>(e =>
       {
-        e.Property(b => b.Nilai).HasColumnType("decimal(18, 2)");
+        e.Property(b => b.Nilai).HasColumnType("decimal(18,2)");
       });
 
       builder.Entity<SBDANAR>(e =>

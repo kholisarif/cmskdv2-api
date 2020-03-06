@@ -17,7 +17,7 @@ namespace ICMSTU.API.Models.Entities
     [Column(TypeName="Date")]
     public DateTime? TglSlsKonk { get; set; }
     public string Uraian { get; set; }
-    public Decimal? Nilai { get; set; }
+    public decimal? Nilai { get; set; }
     [Key]
     public int Id { get; set; }
     public int IdDAFTPHK3 { get; set; }
