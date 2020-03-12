@@ -54,6 +54,8 @@ namespace ICMSTU.API.Infrastructures
     public DbSet<Berita> Berita { get; set; }
     public DbSet<BERITADETR> BERITADETR { get; set; }
     public DbSet<SP2D> SP2D { get; set; }
+    public DbSet<SP2DBPK> SP2DBPK { get; set; }
+    public DbSet<BPKSP2D> BPKSP2D { get; set; }
     public DbSet<DASKR> DASKR { get; set; }
     public DbSet<Kontrak> Kontrak { get; set; }
     public DbSet<SBDANAR> SBDANAR { get; set; }
@@ -325,16 +327,6 @@ namespace ICMSTU.API.Infrastructures
       builder.Entity<DASKRKEGUNIT>(e =>
       {
             e.HasKey(t => new { t.UnitKey, t.KdTahap });
-            e.Property(b => b.Nilai).HasColumnType("decimal(18, 2)");
-            e.Property(b => b.JumlahMin1).HasColumnType("decimal(18, 2)");
-            e.Property(b => b.JumlahPls1).HasColumnType("decimal(18, 2)");
-            e.Property(b => b.Pagu).HasColumnType("decimal(18, 2)");
-            e.Property(b => b.TargetP).HasColumnType("decimal(18, 2)");
-
-      // builder.Entity<BPK>(e =>
-      // {
-      //   e.HasKey(o => new { o.UnitKey, o.NoBPK });
-      // });
       });
     }
   }

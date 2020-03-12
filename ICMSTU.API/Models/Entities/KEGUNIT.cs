@@ -8,8 +8,11 @@ namespace ICMSTU.API.Models.Entities
   [Table("KEGUNIT")]
   public class KEGUNIT
   {
+    [ForeignKey("KdTahap")]
     public string KdTahap { get; set; }
+    [ForeignKey("UnitKey")]
     public string UnitKey { get; set; }
+    public DASKRKEGUNIT DASKRKEGUNIT { get; set; }
     public string KdKegUnit { get; set; }
     public int? IdMKegiatan { get; set; }
     [ForeignKey("IdMKegiatan")]

@@ -3,6 +3,8 @@ using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Routing;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using ICMSTU.API.Models.Entities;
 
 namespace ICMSTU.API.Controllers.OdataControllers
 {
@@ -17,9 +19,9 @@ namespace ICMSTU.API.Controllers.OdataControllers
 
     [HttpGet]
     [ODataRoute("DASKRKEGUNIT({unitKey}, {kdTahap})")]
+    [EnableQuery]
     public IActionResult DASKRKEGUNIT(string unitKey,string kdTahap) {
-        return Ok(_ctx.DASKRKEGUNIT.AsNoTracking().FromSql("EXEC [dbo].[GETDASKRKEGUNIT] {0}, {1}", unitKey, kdTahap)
-        );
+        return Ok(_ctx.DASKRKEGUNIT.AsNoTracking().FromSql("EXEC [dbo].[GETDASKRKEGUNIT] {0}, {1}", unitKey, kdTahap).AsQueryable());
     }
   }
 }

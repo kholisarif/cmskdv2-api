@@ -42,6 +42,8 @@ namespace ICMSTU.API.Infrastructures
       builder.EntitySet<Berita>(nameof(Berita));
       builder.EntitySet<BERITADETR>(nameof(BERITADETR));
       builder.EntitySet<SP2D>(nameof(SP2D));
+      builder.EntitySet<SP2DBPK>(nameof(SP2DBPK));
+      builder.EntitySet<SP2DBPK>(nameof(BPKSP2D));
       builder.EntitySet<DASKR>(nameof(DASKR));
       builder.EntitySet<Kontrak>(nameof(Kontrak));
       builder.EntitySet<SBDANAR>(nameof(SBDANAR));

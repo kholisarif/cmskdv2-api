@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ICMSTU.API.Models.Entities
 {
@@ -28,8 +29,10 @@ namespace ICMSTU.API.Models.Entities
     [Column(TypeName="Date")]
     public DateTime? TglSPM { get; set; }
     public string NoBBantu { get; set; }
+    [Key]
     public int Id { get; set; }
     public DateTime? DateCreate { get; set; }
     public DateTime? DateUpdate { get; set; }
+    public SP2DBPK SP2DBPK { get; set; }
   }
 }

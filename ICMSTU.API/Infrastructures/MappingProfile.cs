@@ -24,6 +24,8 @@ using ICMSTU.API.Commands.JDANA;
 using ICMSTU.API.Commands.Berita;
 using ICMSTU.API.Commands.BERITADETR;
 using ICMSTU.API.Commands.SP2D;
+using ICMSTU.API.Commands.SP2DBPK;
+using ICMSTU.API.Commands.BPKSP2D;
 using ICMSTU.API.Commands.DASKR;
 using ICMSTU.API.Commands.Kontrak;
 using ICMSTU.API.Commands.SBDANAR;
@@ -125,6 +127,12 @@ namespace ICMSTU.API.Infrastructures
 
       CreateMap<SP2DCreate, SP2D>();
       CreateMap<SP2DUpdate, SP2D>();
+
+      CreateMap<SP2DBPKCreate, SP2DBPK>();
+      CreateMap<SP2DBPKUpdate, SP2DBPK>();
+
+      CreateMap<BPKSP2DCreate, BPKSP2D>();
+      CreateMap<BPKSP2DUpdate, BPKSP2D>();
 
       CreateMap<DASKRCreate, DASKR>();
       CreateMap<DASKRUpdate, DASKR>();

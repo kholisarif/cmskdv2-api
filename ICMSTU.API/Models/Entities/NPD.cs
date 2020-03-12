@@ -12,6 +12,7 @@ namespace ICMSTU.API.Models.Entities
     public string KeyBend { get; set; }
     public int IdTrans { get; set; }
     public string Uraian { get; set; }
+    [Column(TypeName="Date")]
     public DateTime? TglNPD { get; set; }
     [Key]
     public int Id { get; set; }
